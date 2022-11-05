@@ -29,8 +29,8 @@ namespace TownOfUs.Modifiers.LoversMod
                 return;
             }
 
-            if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut)) return;
-            if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
+            if (Role.GetRoles(RoleEnum.小丑).Any(x => ((Jester)x).VotedOut)) return;
+            if (Role.GetRoles(RoleEnum.行刑者).Any(x => ((Executioner)x).TargetVotedOut)) return;
             if (!Modifier.AllModifiers.Where(x => x.ModifierType == ModifierEnum.Lover)
                 .Any(x => ((Lover) x).LoveCoupleWins)) return;
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
@@ -54,7 +54,7 @@ namespace TownOfUs.Modifiers.LoversMod
             __instance.BackgroundBar.material.color = new Color(1f, 0.4f, 0.8f, 1f);
 
             text = Object.Instantiate(__instance.WinText);
-            text.text = "Love Couple Wins!";
+            text.text = "恋人获胜!";
             text.color = new Color(1f, 0.4f, 0.8f, 1f);
             pos = __instance.WinText.transform.localPosition;
             pos.y = 1.5f;

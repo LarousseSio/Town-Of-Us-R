@@ -59,7 +59,7 @@ namespace TownOfUs.Modifiers.AssassinMod
 
         public static void Prefix(MeetingHud __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin)) return;
+            if (!PlayerControl.LocalPlayer.Is(AbilityEnum.刺客)) return;
             var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
             if (!CustomGameOptions.AssassinateAfterVoting) HideButtons(assassin);
         }

@@ -8,7 +8,7 @@ namespace TownOfUs.Modifiers.AssassinMod
     {
         public static void Postfix(MeetingHud __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin))
+            if (PlayerControl.LocalPlayer.Is(AbilityEnum.刺客))
             {
                 var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
                 ShowHideButtons.HideButtons(assassin);

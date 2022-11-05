@@ -18,7 +18,7 @@ namespace TownOfUs
             __state = false;
 
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;
@@ -56,7 +56,7 @@ namespace TownOfUs
             __state = false;
 
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;
@@ -105,7 +105,7 @@ namespace TownOfUs
         {
             __state = false;
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;
@@ -143,7 +143,7 @@ namespace TownOfUs
         {
             __state = false;
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;
@@ -169,7 +169,7 @@ namespace TownOfUs
             __state = false;
 
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;
@@ -195,7 +195,7 @@ namespace TownOfUs
             __state = false;
 
             var playerControl = playerInfo.Object;
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
+            if ((playerControl.Is(RoleEnum.幻影) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.冤魂) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
             {
                 playerInfo.IsDead = false;
                 __state = true;

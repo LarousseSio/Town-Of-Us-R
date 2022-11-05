@@ -126,7 +126,7 @@ namespace TownOfUs
             var role = Role.GetRole(player);
             if (role != null) return role.RoleType;
 
-            return player.Data.IsImpostor() ? RoleEnum.Impostor : RoleEnum.Crewmate;
+            return player.Data.IsImpostor() ? RoleEnum.伪装者 : RoleEnum.船员;
         }
 
         public static PlayerControl PlayerById(byte id)
@@ -140,7 +140,7 @@ namespace TownOfUs
 
         public static bool IsShielded(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Medic).Any(role =>
+            return Role.GetRoles(RoleEnum.法医).Any(role =>
             {
                 var shieldedPlayer = ((Medic)role).ShieldedPlayer;
                 return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
@@ -149,7 +149,7 @@ namespace TownOfUs
 
         public static Medic GetMedic(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Medic).FirstOrDefault(role =>
+            return Role.GetRoles(RoleEnum.法医).FirstOrDefault(role =>
             {
                 var shieldedPlayer = ((Medic)role).ShieldedPlayer;
                 return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
@@ -158,7 +158,7 @@ namespace TownOfUs
 
         public static bool IsOnAlert(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Veteran).Any(role =>
+            return Role.GetRoles(RoleEnum.老兵).Any(role =>
             {
                 var veteran = (Veteran)role;
                 return veteran != null && veteran.OnAlert && player.PlayerId == veteran.Player.PlayerId;
@@ -167,7 +167,7 @@ namespace TownOfUs
 
         public static bool IsVesting(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Survivor).Any(role =>
+            return Role.GetRoles(RoleEnum.幸存者).Any(role =>
             {
                 var surv = (Survivor)role;
                 return surv != null && surv.Vesting && player.PlayerId == surv.Player.PlayerId;
@@ -176,7 +176,7 @@ namespace TownOfUs
 
         public static bool IsProtected(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.GuardianAngel).Any(role =>
+            return Role.GetRoles(RoleEnum.守护天使).Any(role =>
             {
                 var gaTarget = ((GuardianAngel)role).target;
                 var ga = (GuardianAngel)role;
@@ -186,7 +186,7 @@ namespace TownOfUs
 
         public static bool IsInfected(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Plaguebearer).Any(role =>
+            return Role.GetRoles(RoleEnum.瘟疫之源).Any(role =>
             {
                 var plaguebearer = (Plaguebearer)role;
                 return plaguebearer != null && (plaguebearer.InfectedPlayers.Contains(player.PlayerId) || player.PlayerId == plaguebearer.Player.PlayerId);
@@ -212,7 +212,7 @@ namespace TownOfUs
                 num = distBetweenPlayers;
                 result = player;
             }
-            
+
             return result;
         }
 
@@ -280,7 +280,7 @@ namespace TownOfUs
                 target.gameObject.layer = LayerMask.NameToLayer("Ghost");
                 target.Visible = false;
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic) && !PlayerControl.LocalPlayer.Data.IsDead)
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.灵媒) && !PlayerControl.LocalPlayer.Data.IsDead)
                 {
                     Coroutines.Start(FlashCoroutine(Patches.Colors.Mystic));
                 }
@@ -335,7 +335,7 @@ namespace TownOfUs
                     target.myTasks.Insert(0, importantTextTask);
                 }
 
-                if (!killer.Is(RoleEnum.Poisoner) && !killer.Is(RoleEnum.Arsonist))
+                if (!killer.Is(RoleEnum.绝命毒师) && !killer.Is(RoleEnum.纵火狂))
                 {
                     killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
                 }
@@ -354,7 +354,7 @@ namespace TownOfUs
 
                 if (!killer.AmOwner) return;
 
-                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Werewolf))
+                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.月下狼人))
                 {
                     var werewolf = Role.GetRole<Werewolf>(killer);
                     werewolf.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.RampageKillCd);
@@ -362,7 +362,7 @@ namespace TownOfUs
                     return;
                 }
 
-                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Glitch))
+                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.混沌))
                 {
                     var glitch = Role.GetRole<Glitch>(killer);
                     glitch.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.GlitchKillCooldown);
@@ -370,7 +370,7 @@ namespace TownOfUs
                     return;
                 }
 
-                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Juggernaut))
+                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.天启))
                 {
                     var juggernaut = Role.GetRole<Juggernaut>(killer);
                     juggernaut.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * (CustomGameOptions.GlitchKillCooldown + 5.0f - 5.0f * juggernaut.JuggKills));
@@ -558,111 +558,111 @@ namespace TownOfUs
         public static void ResetCustomTimers()
         {
             #region CrewmateRoles
-            foreach (Medium role in Role.GetRoles(RoleEnum.Medium))
+            foreach (Medium role in Role.GetRoles(RoleEnum.招魂师))
             {
                 role.LastMediated = DateTime.UtcNow;
             }
-            foreach (Seer role in Role.GetRoles(RoleEnum.Seer))
+            foreach (Seer role in Role.GetRoles(RoleEnum.预言家))
             {
                 role.LastInvestigated = DateTime.UtcNow;
             }
-            foreach (Sheriff role in Role.GetRoles(RoleEnum.Sheriff))
+            foreach (Sheriff role in Role.GetRoles(RoleEnum.警长))
             {
                 role.LastKilled = DateTime.UtcNow;
             }
-            foreach (TimeLord role in Role.GetRoles(RoleEnum.TimeLord))
+            foreach (TimeLord role in Role.GetRoles(RoleEnum.时间领主))
             {
                 role.StartRewind = DateTime.UtcNow.AddSeconds(-10.0f);
                 role.FinishRewind = DateTime.UtcNow;
             }
-            foreach (Tracker role in Role.GetRoles(RoleEnum.Tracker))
+            foreach (Tracker role in Role.GetRoles(RoleEnum.追踪者))
             {
                 role.LastTracked = DateTime.UtcNow;
             }
-            foreach (Transporter role in Role.GetRoles(RoleEnum.Transporter))
+            foreach (Transporter role in Role.GetRoles(RoleEnum.传送师))
             {
                 role.LastTransported = DateTime.UtcNow;
             }
-            foreach (Veteran role in Role.GetRoles(RoleEnum.Veteran))
+            foreach (Veteran role in Role.GetRoles(RoleEnum.老兵))
             {
                 role.LastAlerted = DateTime.UtcNow;
             }
-            foreach (Trapper role in Role.GetRoles(RoleEnum.Trapper))
+            foreach (Trapper role in Role.GetRoles(RoleEnum.陷阱师))
             {
                 role.LastTrapped = DateTime.UtcNow;
             }
-            foreach (Detective role in Role.GetRoles(RoleEnum.Detective))
+            foreach (Detective role in Role.GetRoles(RoleEnum.侧写师))
             {
                 role.LastExamined = DateTime.UtcNow;
             }
             #endregion
             #region NeutralRoles
-            foreach (Survivor role in Role.GetRoles(RoleEnum.Survivor))
+            foreach (Survivor role in Role.GetRoles(RoleEnum.幸存者))
             {
                 role.LastVested = DateTime.UtcNow;
             }
-            foreach (GuardianAngel role in Role.GetRoles(RoleEnum.GuardianAngel))
+            foreach (GuardianAngel role in Role.GetRoles(RoleEnum.守护天使))
             {
                 role.LastProtected = DateTime.UtcNow;
             }
-            foreach (Arsonist role in Role.GetRoles(RoleEnum.Arsonist))
+            foreach (Arsonist role in Role.GetRoles(RoleEnum.纵火狂))
             {
                 role.LastDoused = DateTime.UtcNow;
             }
-            foreach (Glitch role in Role.GetRoles(RoleEnum.Glitch))
+            foreach (Glitch role in Role.GetRoles(RoleEnum.混沌))
             {
                 role.LastHack = DateTime.UtcNow;
                 role.LastKill = DateTime.UtcNow;
                 role.LastMimic = DateTime.UtcNow;
             }
-            foreach (Juggernaut role in Role.GetRoles(RoleEnum.Juggernaut))
+            foreach (Juggernaut role in Role.GetRoles(RoleEnum.天启))
             {
                 role.LastKill = DateTime.UtcNow;
             }
-            foreach (Werewolf role in Role.GetRoles(RoleEnum.Werewolf))
+            foreach (Werewolf role in Role.GetRoles(RoleEnum.月下狼人))
             {
                 role.LastRampaged = DateTime.UtcNow;
                 role.LastKilled = DateTime.UtcNow;
             }
-            foreach (Plaguebearer role in Role.GetRoles(RoleEnum.Plaguebearer))
+            foreach (Plaguebearer role in Role.GetRoles(RoleEnum.瘟疫之源))
             {
                 role.LastInfected = DateTime.UtcNow;
             }
-            foreach (Pestilence role in Role.GetRoles(RoleEnum.Pestilence))
+            foreach (Pestilence role in Role.GetRoles(RoleEnum.万疫之神))
             {
                 role.LastKill = DateTime.UtcNow;
             }
             #endregion
             #region ImposterRoles
-            foreach (Escapist role in Role.GetRoles(RoleEnum.Escapist))
+            foreach (Escapist role in Role.GetRoles(RoleEnum.逃逸者))
             {
                 role.LastEscape = DateTime.UtcNow;
             }
-            foreach (Blackmailer role in Role.GetRoles(RoleEnum.Blackmailer))
+            foreach (Blackmailer role in Role.GetRoles(RoleEnum.勒索者))
             {
                 role.LastBlackmailed = DateTime.UtcNow;
             }
-            foreach (Grenadier role in Role.GetRoles(RoleEnum.Grenadier))
+            foreach (Grenadier role in Role.GetRoles(RoleEnum.掷弹兵))
             {
                 role.LastFlashed = DateTime.UtcNow;
             }
-            foreach (Miner role in Role.GetRoles(RoleEnum.Miner))
+            foreach (Miner role in Role.GetRoles(RoleEnum.管道工))
             {
                 role.LastMined = DateTime.UtcNow;
             }
-            foreach (Morphling role in Role.GetRoles(RoleEnum.Morphling))
+            foreach (Morphling role in Role.GetRoles(RoleEnum.化形者))
             {
                 role.LastMorphed = DateTime.UtcNow;
             }
-            foreach (Poisoner role in Role.GetRoles(RoleEnum.Poisoner))
+            foreach (Poisoner role in Role.GetRoles(RoleEnum.绝命毒师))
             {
                 role.LastPoisoned = DateTime.UtcNow;
             }
-            foreach (Swooper role in Role.GetRoles(RoleEnum.Swooper))
+            foreach (Swooper role in Role.GetRoles(RoleEnum.隐身人))
             {
                 role.LastSwooped = DateTime.UtcNow;
             }
-            foreach (Undertaker role in Role.GetRoles(RoleEnum.Undertaker))
+            foreach (Undertaker role in Role.GetRoles(RoleEnum.送葬者))
             {
                 role.LastDragged = DateTime.UtcNow;
             }

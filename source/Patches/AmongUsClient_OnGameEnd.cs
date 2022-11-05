@@ -37,7 +37,7 @@ namespace TownOfUs
             if (Role.SurvOnlyWins)
             {
                 var winners = new List<WinningPlayerData>();
-                foreach (var role in Role.GetRoles(RoleEnum.Survivor))
+                foreach (var role in Role.GetRoles(RoleEnum.幸存者))
                 {
                     var surv = (Survivor)role;
                     if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -54,7 +54,7 @@ namespace TownOfUs
             {
                 var type = role.RoleType;
 
-                if (type == RoleEnum.Jester)
+                if (type == RoleEnum.小丑)
                 {
                     var jester = (Jester)role;
                     if (jester.VotedOut)
@@ -69,7 +69,7 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Executioner)
+                else if (type == RoleEnum.行刑者)
                 {
                     var executioner = (Executioner)role;
                     if (executioner.TargetVotedOut)
@@ -85,13 +85,13 @@ namespace TownOfUs
             {
                 var type = role.RoleType;
 
-                if (type == RoleEnum.Glitch)
+                if (type == RoleEnum.混沌)
                 {
                     var glitch = (Glitch)role;
                     if (glitch.GlitchWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == glitch.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -104,13 +104,13 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Juggernaut)
+                else if (type == RoleEnum.天启)
                 {
                     var juggernaut = (Juggernaut)role;
                     if (juggernaut.JuggernautWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == juggernaut.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -123,13 +123,13 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Arsonist)
+                else if (type == RoleEnum.纵火狂)
                 {
                     var arsonist = (Arsonist)role;
                     if (arsonist.ArsonistWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == arsonist.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -142,13 +142,13 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Plaguebearer)
+                else if (type == RoleEnum.瘟疫之源)
                 {
                     var plaguebearer = (Plaguebearer)role;
                     if (plaguebearer.PlaguebearerWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == plaguebearer.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -161,13 +161,13 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Pestilence)
+                else if (type == RoleEnum.万疫之神)
                 {
                     var pestilence = (Pestilence)role;
                     if (pestilence.PestilenceWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == pestilence.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -180,13 +180,13 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Werewolf)
+                else if (type == RoleEnum.月下狼人)
                 {
                     var werewolf = (Werewolf)role;
                     if (werewolf.WerewolfWins)
                     {
                         var winners = Utils.potentialWinners.Where(x => x.PlayerName == werewolf.PlayerName).ToList();
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Survivor))
+                        foreach (var role2 in Role.GetRoles(RoleEnum.幸存者))
                         {
                             var surv = (Survivor)role2;
                             if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
@@ -199,7 +199,7 @@ namespace TownOfUs
                         return;
                     }
                 }
-                else if (type == RoleEnum.Phantom)
+                else if (type == RoleEnum.幻影)
                 {
                     var phantom = (Phantom)role;
                     if (phantom.CompletedTasks)

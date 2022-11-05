@@ -17,6 +17,7 @@ namespace TownOfUs {
 
             var touLogo = new GameObject("bannerLogo_TownOfUs");
             touLogo.transform.position = Vector3.up;
+            touLogo.transform.localScale *=0.7f;
             var renderer = touLogo.AddComponent<SpriteRenderer>();
             renderer.sprite = Sprite;
 

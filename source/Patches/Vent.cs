@@ -39,21 +39,21 @@ namespace TownOfUs
             if (playerInfo.IsDead)
                 return false;
 
-            if (player.Is(RoleEnum.Morphling) && !CustomGameOptions.MorphlingVent
-                || player.Is(RoleEnum.Swooper) && !CustomGameOptions.SwooperVent
-                || player.Is(RoleEnum.Grenadier) && !CustomGameOptions.GrenadierVent
-                || player.Is(RoleEnum.Undertaker) && !CustomGameOptions.UndertakerVent
-                || player.Is(RoleEnum.Poisoner) && !CustomGameOptions.PoisonerVent
-                || player.Is(RoleEnum.Escapist) && !CustomGameOptions.EscapistVent
-                || (player.Is(RoleEnum.Undertaker) && Role.GetRole<Undertaker>(player).CurrentlyDragging != null && !CustomGameOptions.UndertakerVentWithBody))
+            if (player.Is(RoleEnum.化形者) && !CustomGameOptions.MorphlingVent
+                || player.Is(RoleEnum.隐身人) && !CustomGameOptions.SwooperVent
+                || player.Is(RoleEnum.掷弹兵) && !CustomGameOptions.GrenadierVent
+                || player.Is(RoleEnum.送葬者) && !CustomGameOptions.UndertakerVent
+                || player.Is(RoleEnum.绝命毒师) && !CustomGameOptions.PoisonerVent
+                || player.Is(RoleEnum.逃逸者) && !CustomGameOptions.EscapistVent
+                || (player.Is(RoleEnum.送葬者) && Role.GetRole<Undertaker>(player).CurrentlyDragging != null && !CustomGameOptions.UndertakerVentWithBody))
                 return false;
 
-            if (player.Is(RoleEnum.Engineer) || (player.roleAssigned && playerInfo.Role?.Role == RoleTypes.Engineer) ||
-                (player.Is(RoleEnum.Glitch) && CustomGameOptions.GlitchVent) || (player.Is(RoleEnum.Juggernaut) && CustomGameOptions.GlitchVent) ||
-                (player.Is(RoleEnum.Pestilence) && CustomGameOptions.PestVent) || (player.Is(RoleEnum.Jester) && CustomGameOptions.JesterVent))
+            if (player.Is(RoleEnum.工程师) || (player.roleAssigned && playerInfo.Role?.Role == RoleTypes.Engineer) ||
+                (player.Is(RoleEnum.混沌) && CustomGameOptions.GlitchVent) || (player.Is(RoleEnum.天启) && CustomGameOptions.GlitchVent) ||
+                (player.Is(RoleEnum.万疫之神) && CustomGameOptions.PestVent) || (player.Is(RoleEnum.小丑) && CustomGameOptions.JesterVent))
                 return true;
 
-            if (player.Is(RoleEnum.Werewolf) && CustomGameOptions.WerewolfVent)
+            if (player.Is(RoleEnum.月下狼人) && CustomGameOptions.WerewolfVent)
             {
                 var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
                 if (role.Rampaged) return true;
@@ -127,7 +127,7 @@ namespace TownOfUs
     {
         public static bool Prefix(Vent __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester) && CustomGameOptions.JesterVent)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.小丑) && CustomGameOptions.JesterVent)
                 return false;
             return true;
         }

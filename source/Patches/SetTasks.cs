@@ -10,7 +10,7 @@ namespace TownOfUs.Patches
         public static void Postfix(PlayerControl __instance)
         {
             var role = Role.GetRole(__instance);
-            if (role.Faction != Faction.Crewmates && role.RoleType != RoleEnum.Phantom) return;
+            if (role.Faction != Faction.Crewmates && role.RoleType != RoleEnum.幻影) return;
 
             var taskinfos = __instance.Data.Tasks.ToArray();
             var tasksLeft = taskinfos.Count(x => !x.Complete);

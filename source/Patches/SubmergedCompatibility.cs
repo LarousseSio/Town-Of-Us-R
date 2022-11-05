@@ -35,12 +35,12 @@ namespace TownOfUs.Patches
         {
             if (SubmergedCompatibility.isSubmerged())
             {
-                if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+                if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
                 {
                     if (!Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(false);
                     else __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(true);
                 }
-                if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
+                if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.幻影))
                 {
                     if (!Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(false);
                     else  __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(true);
@@ -311,7 +311,7 @@ namespace TownOfUs.Patches
         public static void GhostRoleBegin()
         {
             if (!PlayerControl.LocalPlayer.Data.IsDead) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
             {
                 if (!Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught)
                 {
@@ -335,7 +335,7 @@ namespace TownOfUs.Patches
                     PlayerControl.LocalPlayer.MyPhysics.RpcEnterVent(startingVent.Id);
                 }
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.幻影))
             {
                 if (!Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught)
                 {
@@ -366,7 +366,7 @@ namespace TownOfUs.Patches
             if (Loaded && __instance.myPlayer.Data.IsDead)
             {
                 PlayerControl player = __instance.myPlayer;
-                if (player.Is(RoleEnum.Phantom))
+                if (player.Is(RoleEnum.幻影))
                 {
 
                     if (!Role.GetRole<Phantom>(player).Caught)
@@ -382,7 +382,7 @@ namespace TownOfUs.Patches
                         __instance.myPlayer.gameObject.layer = 8;
                     }
                 }
-                if (player.Is(RoleEnum.Haunter))
+                if (player.Is(RoleEnum.冤魂))
                 {
                     if (!Role.GetRole<Haunter>(player).Caught)
                     {

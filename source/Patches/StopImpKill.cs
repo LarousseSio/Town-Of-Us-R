@@ -17,7 +17,7 @@ namespace TownOfUs
             var target = __instance.currentTarget;
             if (target == null) return true;
             if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return true;
-            if (target.Is(RoleEnum.Pestilence))
+            if (target.Is(RoleEnum.万疫之神))
             {
                 if (PlayerControl.LocalPlayer.IsShielded())
                 {
@@ -44,7 +44,7 @@ namespace TownOfUs
             }
             if (target.IsInfected() || PlayerControl.LocalPlayer.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(target, PlayerControl.LocalPlayer);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(target, PlayerControl.LocalPlayer);
             }
             if (target.IsOnAlert())
             {
@@ -112,7 +112,7 @@ namespace TownOfUs
                 writer.Write(target.PlayerId);
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
 
-                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                 if (CustomGameOptions.ShieldBreaks) PlayerControl.LocalPlayer.SetKillTimer(PlayerControl.GameOptions.KillCooldown);
                 else PlayerControl.LocalPlayer.SetKillTimer(0.01f);
                 StopKill.BreakShield(target.GetMedic().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);

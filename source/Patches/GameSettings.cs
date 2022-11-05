@@ -28,7 +28,7 @@ namespace TownOfUs
                 {
                     if (option.Name == "Crewmate Investigative Roles")
                     {
-                        builder.Append("(Scroll for all settings)");
+                        builder.Append("(使用鼠标滚轮查看所有的设置项)");
                         builder.AppendLine("");
                         builder.Append(new StringBuilder(__result));
                     }

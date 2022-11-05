@@ -249,8 +249,8 @@ namespace TownOfUs
             canHaveModifier.Shuffle();
             canHaveAbility.RemoveAll(player => !player.Is(Faction.Impostors));
             canHaveAbility.Shuffle();
-            canHaveAbility2.RemoveAll(player => !player.Is(Faction.Neutral) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.GuardianAngel)
-            || player.Is(RoleEnum.Survivor) || player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester));
+            canHaveAbility2.RemoveAll(player => !player.Is(Faction.Neutral) || player.Is(RoleEnum.失忆者) || player.Is(RoleEnum.守护天使)
+            || player.Is(RoleEnum.幸存者) || player.Is(RoleEnum.行刑者) || player.Is(RoleEnum.小丑));
             canHaveAbility2.Shuffle();
             var impAssassins = CustomGameOptions.NumberOfImpostorAssassins;
             var neutAssassins = CustomGameOptions.NumberOfNeutralAssassins;
@@ -270,7 +270,7 @@ namespace TownOfUs
             }
 
             var canHaveAssassinModifier = PlayerControl.AllPlayerControls.ToArray().ToList();
-            canHaveAssassinModifier.RemoveAll(player => !player.Is(Faction.Impostors) || !player.Is(AbilityEnum.Assassin));
+            canHaveAssassinModifier.RemoveAll(player => !player.Is(Faction.Impostors) || !player.Is(AbilityEnum.刺客));
 
             foreach (var (type, rpc, _) in AssassinModifiers)
             {
@@ -302,7 +302,7 @@ namespace TownOfUs
                 }
             }
 
-            canHaveModifier.RemoveAll(player => player.Is(RoleEnum.Glitch));
+            canHaveModifier.RemoveAll(player => player.Is(RoleEnum.混沌));
 
             foreach (var (type, rpc, _) in ButtonModifiers)
             {
@@ -310,8 +310,8 @@ namespace TownOfUs
                 Role.Gen<Modifier>(type, canHaveModifier, rpc);
             }
 
-            canHaveModifier.RemoveAll(player => player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Werewolf)
-            || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Arsonist) || player.Is(Faction.Impostors));
+            canHaveModifier.RemoveAll(player => player.Is(RoleEnum.天启) || player.Is(RoleEnum.月下狼人)
+            || player.Is(RoleEnum.瘟疫之源) || player.Is(RoleEnum.纵火狂) || player.Is(Faction.Impostors));
             canHaveModifier.Shuffle();
 
             while (canHaveModifier.Count > 0 && CrewmateModifiers.Count > 0)
@@ -320,7 +320,7 @@ namespace TownOfUs
                 Role.Gen<Modifier>(type, canHaveModifier.TakeFirst(), rpc);
             }
 
-            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover)).ToList();
+              var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover)).ToList();
             if (TraitorOn && toChooseFromCrew.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromCrew.Count);
@@ -383,8 +383,8 @@ namespace TownOfUs
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
             }
 
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
-            foreach (var role in Role.GetRoles(RoleEnum.Executioner))
+            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.市长) && !x.Is(RoleEnum.换票师) && !x.Is(RoleEnum.侠客) && x != SetTraitor.WillBeTraitor).ToList();
+            foreach (var role in Role.GetRoles(RoleEnum.行刑者))
             {
                 var exe = (Executioner)role;
                 if (exeTargets.Count > 0)
@@ -401,7 +401,7 @@ namespace TownOfUs
             }
 
             var gaTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Is(Faction.Neutral) && !x.Is(ModifierEnum.Lover)).ToList();
-            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
+            foreach (var role in Role.GetRoles(RoleEnum.守护天使))
             {
                 var ga = (GuardianAngel)role;
                 if (gaTargets.Count > 0)
@@ -581,39 +581,39 @@ namespace TownOfUs
 
                     case CustomRPC.JesterLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Jester)
+                            if (role.RoleType == RoleEnum.小丑)
                                 ((Jester) role).Loses();
                         break;
 
                     case CustomRPC.PhantomLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Phantom)
+                            if (role.RoleType == RoleEnum.幻影)
                                 ((Phantom) role).Loses();
                         break;
 
 
                     case CustomRPC.GlitchLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Glitch)
+                            if (role.RoleType == RoleEnum.混沌)
                                 ((Glitch) role).Loses();
                         break;
 
 
                     case CustomRPC.JuggernautLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Juggernaut)
+                            if (role.RoleType == RoleEnum.天启)
                                 ((Juggernaut)role).Loses();
                         break;
 
                     case CustomRPC.AmnesiacLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Amnesiac)
+                            if (role.RoleType == RoleEnum.失忆者)
                                 ((Amnesiac)role).Loses();
                         break;
 
                     case CustomRPC.ExecutionerLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Executioner)
+                            if (role.RoleType == RoleEnum.行刑者)
                                 ((Executioner) role).Loses();
                         break;
 
@@ -675,7 +675,7 @@ namespace TownOfUs
                         var mayor = Utils.PlayerById(reader.ReadByte());
                         var mayorRole = Role.GetRole<Mayor>(mayor);
                         mayorRole.ExtraVotes = reader.ReadBytesAndSize().ToList();
-                        if (!mayor.Is(RoleEnum.Mayor)) mayorRole.VoteBank -= mayorRole.ExtraVotes.Count;
+                        if (!mayor.Is(RoleEnum.市长)) mayorRole.VoteBank -= mayorRole.ExtraVotes.Count;
 
                         break;
 
@@ -686,7 +686,7 @@ namespace TownOfUs
                         readSByte2 = reader.ReadSByte();
                         SwapVotes.Swap2 =
                             MeetingHud.Instance.playerStates.FirstOrDefault(x => x.TargetPlayerId == readSByte2);
-                        PluginSingleton<TownOfUs>.Instance.Log.LogMessage("Bytes received - " + readSByte + " - " +
+                        PluginSingleton<TownOfUs>.Instance.Log.LogMessage("接收到字节 - " + readSByte + " - " +
                                                                           readSByte2);
                         break;
                     case CustomRPC.Remember:
@@ -760,18 +760,18 @@ namespace TownOfUs
                         Utils.Unmorph(theGlitchRole.Player);
                         break;
                     case CustomRPC.GlitchWin:
-                        var theGlitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch);
+                        var theGlitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.混沌);
                         ((Glitch) theGlitch)?.Wins();
                         break;
                     case CustomRPC.JuggernautWin:
-                        var juggernaut = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Juggernaut);
+                        var juggernaut = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.天启);
                         ((Juggernaut)juggernaut)?.Wins();
                         break;
                     case CustomRPC.SetHacked:
                         var hackPlayer = Utils.PlayerById(reader.ReadByte());
                         if (hackPlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
                         {
-                            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch);
+                            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.混沌);
                             ((Glitch) glitch)?.SetHacked(hackPlayer);
                         }
 
@@ -880,7 +880,7 @@ namespace TownOfUs
                         Coroutines.Start(Transporter.TransportPlayers(reader.ReadByte(), reader.ReadByte(), reader.ReadBoolean()));
                         break;
                     case CustomRPC.SetUntransportable:
-                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
+                        if (PlayerControl.LocalPlayer.Is(RoleEnum.传送师))
                         {
                             Role.GetRole<Transporter>(PlayerControl.LocalPlayer).UntransportablePlayers.Add(reader.ReadByte(), DateTime.UtcNow);
                         }
@@ -942,58 +942,58 @@ namespace TownOfUs
                         break;
 
                     case CustomRPC.ArsonistWin:
-                        var theArsonistTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Arsonist);
+                        var theArsonistTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.纵火狂);
                         ((Arsonist) theArsonistTheRole)?.Wins();
                         break;
                     case CustomRPC.ArsonistLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Arsonist)
+                            if (role.RoleType == RoleEnum.纵火狂)
                                 ((Arsonist) role).Loses();
                         break;
                     case CustomRPC.WerewolfWin:
-                        var theWerewolfTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Werewolf);
+                        var theWerewolfTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.月下狼人);
                         ((Werewolf)theWerewolfTheRole)?.Wins();
                         break;
                     case CustomRPC.WerewolfLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Werewolf)
+                            if (role.RoleType == RoleEnum.月下狼人)
                                 ((Werewolf)role).Loses();
                         break;
                     case CustomRPC.SurvivorImpWin:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Survivor && !role.Player.Data.IsDead && !role.Player.Data.Disconnected)
+                            if (role.RoleType == RoleEnum.幸存者 && !role.Player.Data.IsDead && !role.Player.Data.Disconnected)
                             {
                                 ((Survivor)role).AliveImpWin();
                             }
                         break;
                     case CustomRPC.SurvivorCrewWin:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Survivor && (role.Player.Data.IsDead || role.Player.Data.Disconnected))
+                            if (role.RoleType == RoleEnum.幸存者 && (role.Player.Data.IsDead || role.Player.Data.Disconnected))
                             {
                                 ((Survivor)role).DeadCrewWin();
                             }
                         break;
                     case CustomRPC.GAImpWin:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.GuardianAngel && ((GuardianAngel)role).target.Is(Faction.Impostors))
+                            if (role.RoleType == RoleEnum.守护天使 && ((GuardianAngel)role).target.Is(Faction.Impostors))
                             {
                                 ((GuardianAngel)role).ImpTargetWin();
                             }
                         break;
                     case CustomRPC.GAImpLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.GuardianAngel && ((GuardianAngel)role).target.Is(Faction.Impostors))
+                            if (role.RoleType == RoleEnum.守护天使 && ((GuardianAngel)role).target.Is(Faction.Impostors))
                             {
                                 ((GuardianAngel)role).ImpTargetLose();
                             }
                         break;
                     case CustomRPC.PlaguebearerWin:
-                        var thePlaguebearerTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer);
+                        var thePlaguebearerTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.瘟疫之源);
                         ((Plaguebearer)thePlaguebearerTheRole)?.Wins();
                         break;
                     case CustomRPC.PlaguebearerLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Plaguebearer)
+                            if (role.RoleType == RoleEnum.瘟疫之源)
                                 ((Plaguebearer)role).Loses();
                         break;
                     case CustomRPC.Infect:
@@ -1003,12 +1003,12 @@ namespace TownOfUs
                         Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte())).TurnPestilence();
                         break;
                     case CustomRPC.PestilenceWin:
-                        var thePestilenceTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence);
+                        var thePestilenceTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.万疫之神);
                         ((Pestilence)thePestilenceTheRole)?.Wins();
                         break;
                     case CustomRPC.PestilenceLose:
                         foreach (var role in Role.AllRoles)
-                            if (role.RoleType == RoleEnum.Pestilence)
+                            if (role.RoleType == RoleEnum.万疫之神)
                                 ((Pestilence)role).Loses();
                         break;
                     case CustomRPC.SetImpostor:
@@ -1151,11 +1151,11 @@ namespace TownOfUs
                         phantom.gameObject.layer = LayerMask.NameToLayer("Players");
                         SetPhantom.RemoveTasks(phantom);
                         SetPhantom.AddCollider(phantomRole);
-                        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+                        if (!PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
                         {
                             PlayerControl.LocalPlayer.MyPhysics.ResetMoveState();
                         }
-                        System.Console.WriteLine("Become Phantom - Users");
+                        System.Console.WriteLine("变成幻影的玩家");
                         break;
                     case CustomRPC.CatchPhantom:
                         var phantomPlayer = Utils.PlayerById(reader.ReadByte());
@@ -1176,11 +1176,11 @@ namespace TownOfUs
                         haunter.gameObject.layer = LayerMask.NameToLayer("Players");
                         SetHaunter.RemoveTasks(haunter);
                         SetHaunter.AddCollider(haunterRole);
-                        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
+                        if (!PlayerControl.LocalPlayer.Is(RoleEnum.幻影))
                         {
                             PlayerControl.LocalPlayer.MyPhysics.ResetMoveState();
                         }
-                        System.Console.WriteLine("Become Haunter - Users");
+                        System.Console.WriteLine("变成冤魂的玩家");
                         break;
                     case CustomRPC.CatchHaunter:
                         var haunterPlayer = Utils.PlayerById(reader.ReadByte());
@@ -1251,7 +1251,7 @@ namespace TownOfUs
         {
             public static void Postfix()
             {
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage("RPC SET ROLE");
+                PluginSingleton<TownOfUs>.Instance.Log.LogMessage("RPC 职业设置");
                 var infected = GameData.Instance.AllPlayers.ToArray().Where(o => o.IsImpostor());
 
                 Utils.ShowDeadBodies = false;
@@ -1417,7 +1417,7 @@ namespace TownOfUs
 
                     if (Check(CustomGameOptions.BaitOn))
                         CrewmateModifiers.Add((typeof(Bait), CustomRPC.SetBait, CustomGameOptions.BaitOn));
-
+                    
                     if (Check(CustomGameOptions.BlindOn))
                         CrewmateModifiers.Add((typeof(Blind), CustomRPC.SetBlind, CustomGameOptions.BlindOn));
 
@@ -1442,7 +1442,7 @@ namespace TownOfUs
 
                     if (Check(CustomGameOptions.SleuthOn))
                         GlobalModifiers.Add((typeof(Sleuth), CustomRPC.SetSleuth, CustomGameOptions.SleuthOn));
-
+                    
                     if (Check(CustomGameOptions.RadarOn))
                         GlobalModifiers.Add((typeof(Radar), CustomRPC.SetRadar, CustomGameOptions.RadarOn));
                     #endregion

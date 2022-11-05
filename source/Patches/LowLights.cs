@@ -18,15 +18,15 @@ namespace TownOfUs
             }
 
             var switchSystem = __instance.Systems[SystemTypes.Electrical].Cast<SwitchSystem>();
-            if (player.IsImpostor() || player._object.Is(RoleEnum.Glitch) ||
-                player._object.Is(RoleEnum.Juggernaut) || player._object.Is(RoleEnum.Pestilence) ||
-                (player._object.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
-                (player._object.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision))
+            if (player.IsImpostor() || player._object.Is(RoleEnum.混沌) ||
+                player._object.Is(RoleEnum.天启) || player._object.Is(RoleEnum.万疫之神) ||
+                (player._object.Is(RoleEnum.小丑) && CustomGameOptions.JesterImpVision) ||
+                (player._object.Is(RoleEnum.纵火狂) && CustomGameOptions.ArsoImpVision))
             {
                 __result = __instance.MaxLightRadius * PlayerControl.GameOptions.ImpostorLightMod;
                 return false;
             }
-            else if (player._object.Is(RoleEnum.Werewolf))
+            else if (player._object.Is(RoleEnum.月下狼人))
             {
                 var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
                 if (role.Rampaged)

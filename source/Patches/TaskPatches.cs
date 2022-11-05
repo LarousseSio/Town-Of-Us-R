@@ -19,13 +19,13 @@ namespace TownOfUs
                     if (!playerInfo.Disconnected && playerInfo.Tasks != null && playerInfo.Object &&
                         (PlayerControl.GameOptions.GhostsDoTasks || !playerInfo.IsDead) && !playerInfo.IsImpostor() &&
                         !(
-                            playerInfo._object.Is(RoleEnum.Jester) || playerInfo._object.Is(RoleEnum.Amnesiac) ||
-                            playerInfo._object.Is(RoleEnum.Survivor) || playerInfo._object.Is(RoleEnum.GuardianAngel) ||
-                            playerInfo._object.Is(RoleEnum.Glitch) || playerInfo._object.Is(RoleEnum.Executioner) ||
-                            playerInfo._object.Is(RoleEnum.Arsonist) || playerInfo._object.Is(RoleEnum.Juggernaut) ||
-                            playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
-                            playerInfo._object.Is(RoleEnum.Werewolf) ||
-                            playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter)
+                            playerInfo._object.Is(RoleEnum.小丑) || playerInfo._object.Is(RoleEnum.失忆者) ||
+                            playerInfo._object.Is(RoleEnum.幸存者) || playerInfo._object.Is(RoleEnum.守护天使) ||
+                            playerInfo._object.Is(RoleEnum.混沌) || playerInfo._object.Is(RoleEnum.行刑者) ||
+                            playerInfo._object.Is(RoleEnum.纵火狂) || playerInfo._object.Is(RoleEnum.天启) ||
+                            playerInfo._object.Is(RoleEnum.瘟疫之源) || playerInfo._object.Is(RoleEnum.万疫之神) ||
+                            playerInfo._object.Is(RoleEnum.月下狼人) ||
+                            playerInfo._object.Is(RoleEnum.幻影) || playerInfo._object.Is(RoleEnum.冤魂)
                         ))
                         for (var j = 0; j < playerInfo.Tasks.Count; j++)
                         {
@@ -45,14 +45,14 @@ namespace TownOfUs
             {
                 var playerControl = playerInfo.Object;
 
-                var flag = playerControl.Is(RoleEnum.Glitch)
-                           || playerControl.Is(RoleEnum.Jester)
-                           || playerControl.Is(RoleEnum.Executioner)
-                           || playerControl.Is(RoleEnum.Juggernaut)
-                           || playerControl.Is(RoleEnum.Arsonist)
-                           || playerControl.Is(RoleEnum.Plaguebearer)
-                           || playerControl.Is(RoleEnum.Pestilence)
-                           || playerControl.Is(RoleEnum.Werewolf);
+                var flag = playerControl.Is(RoleEnum.混沌)
+                           || playerControl.Is(RoleEnum.小丑)
+                           || playerControl.Is(RoleEnum.行刑者)
+                           || playerControl.Is(RoleEnum.天启)
+                           || playerControl.Is(RoleEnum.纵火狂)
+                           || playerControl.Is(RoleEnum.瘟疫之源)
+                           || playerControl.Is(RoleEnum.万疫之神)
+                           || playerControl.Is(RoleEnum.月下狼人);
 
                 // If the console is not a sabotage repair console
                 if (flag && !__instance.AllowImpostor)

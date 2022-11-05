@@ -122,7 +122,7 @@ namespace TownOfUs.Extensions
 
             return false;
         }
-        public static Texture2D CreateEmptyTexture(int width = 0, int height = 0)
+                public static Texture2D CreateEmptyTexture(int width = 0, int height = 0)
         {
             return new Texture2D(width, height, TextureFormat.RGBA32, Texture.GenerateAllMips, false, IntPtr.Zero);
         }

@@ -18,7 +18,7 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.追踪者)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var trackButton = DestroyableSingleton<HudManager>.Instance.KillButton;

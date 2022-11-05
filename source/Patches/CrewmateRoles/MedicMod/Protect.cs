@@ -10,7 +10,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Medic);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.法医);
             if (!flag) return true;
             var role = Role.GetRole<Medic>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;
@@ -18,9 +18,9 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             if (role.UsedAbility || role.ClosestPlayer == null) return false;
             if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (!PlayerControl.LocalPlayer.IsProtected())
                 {

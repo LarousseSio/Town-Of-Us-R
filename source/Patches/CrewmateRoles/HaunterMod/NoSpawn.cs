@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static bool Prefix(SpawnInMinigame __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
             {
                 var caught = Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught;
                 if (!caught)

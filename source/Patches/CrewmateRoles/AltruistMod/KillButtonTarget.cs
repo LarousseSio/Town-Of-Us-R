@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.AltruistMod
 
         public static bool Prefix(KillButton __instance)
         {
-            return !PlayerControl.LocalPlayer.Is(RoleEnum.Altruist);
+            return !PlayerControl.LocalPlayer.Is(RoleEnum.殉道者);
         }
 
         public static void SetTarget(KillButton __instance, DeadBody target, Altruist role)

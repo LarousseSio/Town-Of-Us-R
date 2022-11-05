@@ -14,11 +14,11 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Transporter)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.传送师)) return;
             var role = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
             if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
                 if (role != null)
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.传送师))
                         Role.GetRole<Transporter>(PlayerControl.LocalPlayer).Update(__instance);
         }
     }

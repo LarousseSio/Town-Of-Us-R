@@ -12,7 +12,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Transporter)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.传送师)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var transportButton = DestroyableSingleton<HudManager>.Instance.KillButton;
 

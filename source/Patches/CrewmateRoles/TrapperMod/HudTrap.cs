@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Trapper)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.陷阱师)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var trapButton = DestroyableSingleton<HudManager>.Instance.KillButton;

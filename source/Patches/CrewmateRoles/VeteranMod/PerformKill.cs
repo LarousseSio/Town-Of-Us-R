@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.VeteranMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Veteran);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.老兵);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;

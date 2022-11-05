@@ -16,7 +16,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Medic)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.法医)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var protectButton = DestroyableSingleton<HudManager>.Instance.KillButton;

@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Transporter))
+            foreach (var role in Role.GetRoles(RoleEnum.传送师))
             {
                 var transporter = (Transporter) role;
                 transporter.LastTransported = DateTime.UtcNow;

@@ -22,13 +22,13 @@ namespace TownOfUs.CrewmateRoles.MedicMod
                 //System.Console.WriteLine("RBTWOOF");
                 return;
 
-            var isMedicAlive = __instance.Is(RoleEnum.Medic);
+            var isMedicAlive = __instance.Is(RoleEnum.法医);
             var areReportsEnabled = CustomGameOptions.ShowReports;
 
             if (!isMedicAlive || !areReportsEnabled)
                 return;
 
-            var isUserMedic = PlayerControl.LocalPlayer.Is(RoleEnum.Medic);
+            var isUserMedic = PlayerControl.LocalPlayer.Is(RoleEnum.法医);
             if (!isUserMedic)
                 return;
             //System.Console.WriteLine("RBTHREEF");

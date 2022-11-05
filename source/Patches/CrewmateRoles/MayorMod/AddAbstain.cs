@@ -13,7 +13,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
             role.Abstain.gameObject.SetActive(skip.gameObject.active && !role.VotedOnce);
             role.Abstain.voteComplete = skip.voteComplete;
             role.Abstain.GetComponent<SpriteRenderer>().enabled = skip.GetComponent<SpriteRenderer>().enabled;
-            role.Abstain.GetComponentsInChildren<TextMeshPro>()[0].text = "Abstain";
+            role.Abstain.GetComponentsInChildren<TextMeshPro>()[0].text = "存票";
         }
 
 
@@ -34,7 +34,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
 
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 GenButton(mayorRole, __instance);
             }
@@ -45,7 +45,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 UpdateButton(mayorRole, __instance);
             }
@@ -56,7 +56,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 mayorRole.Abstain.ClearButtons();
                 UpdateButton(mayorRole, __instance);
@@ -68,7 +68,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance, int __0)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 if (__0 != 251) mayorRole.Abstain.ClearButtons();
 
@@ -81,7 +81,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 UpdateButton(mayorRole, __instance);
             }
@@ -92,7 +92,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var mayorRole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 switch (__instance.state)
                 {

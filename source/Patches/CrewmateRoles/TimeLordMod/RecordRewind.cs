@@ -50,7 +50,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
             {
                 isDead = true;
                 deadTime = TempData.LastDeathReason == DeathReason.Exile ||
-                           PlayerControl.LocalPlayer.Is(RoleEnum.Altruist)
+                           PlayerControl.LocalPlayer.Is(RoleEnum.殉道者)
                     ? 0
                     : Time.time;
             }
@@ -139,7 +139,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
 
         public static void ReviveBody(PlayerControl player)
         {
-            foreach (var poisoner in Role.GetRoles(RoleEnum.Poisoner))
+            foreach (var poisoner in Role.GetRoles(RoleEnum.绝命毒师))
             {
                 var poisonerRole = (Poisoner)poisoner;
                 if (poisonerRole.PoisonedPlayer == player) poisonerRole.PoisonedPlayer = poisonerRole.Player;
@@ -160,7 +160,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
                 Rewind();
             else Record();
 
-            foreach (var role in Role.GetRoles(RoleEnum.TimeLord))
+            foreach (var role in Role.GetRoles(RoleEnum.时间领主))
             {
                 var TimeLord = (TimeLord) role;
                 if ((DateTime.UtcNow - TimeLord.StartRewind).TotalMilliseconds >

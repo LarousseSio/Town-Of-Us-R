@@ -14,7 +14,7 @@ namespace TownOfUs.CrewmateRoles.SnitchMod
 
         public static void Postfix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Snitch)) return;
+            if (!__instance.Is(RoleEnum.告密者)) return;
             if (__instance.Data.IsDead) return;
             var taskinfos = __instance.Data.Tasks.ToArray();
 
@@ -31,14 +31,14 @@ namespace TownOfUs.CrewmateRoles.SnitchMod
                     if (tasksLeft == CustomGameOptions.SnitchTasksRemaining)
                     {
                         role.RegenTask();
-                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
+                        if (PlayerControl.LocalPlayer.Is(RoleEnum.告密者))
                         {
                             Coroutines.Start(Utils.FlashCoroutine(role.Color));
                         }
-                        else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
-                            || ((PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
-                            || PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist) || PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)
-                            || PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence)) && CustomGameOptions.SnitchSeesNeutrals))
+                        else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.背叛者) || CustomGameOptions.SnitchSeesTraitor))
+                            || ((PlayerControl.LocalPlayer.Is(RoleEnum.混沌) || PlayerControl.LocalPlayer.Is(RoleEnum.天启)
+                            || PlayerControl.LocalPlayer.Is(RoleEnum.纵火狂) || PlayerControl.LocalPlayer.Is(RoleEnum.月下狼人)
+                            || PlayerControl.LocalPlayer.Is(RoleEnum.瘟疫之源) || PlayerControl.LocalPlayer.Is(RoleEnum.万疫之神)) && CustomGameOptions.SnitchSeesNeutrals))
                         {
                             Coroutines.Start(Utils.FlashCoroutine(role.Color));
                             var gameObj = new GameObject();
@@ -55,14 +55,14 @@ namespace TownOfUs.CrewmateRoles.SnitchMod
 
                 case 0:
                     role.RegenTask();
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.告密者))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(Color.green));
                         var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor());
-                        var traitor = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Traitor));
+                        var traitor = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.背叛者));
                         foreach (var imp in impostors)
                         {
-                            if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor)
+                            if (!imp.Is(RoleEnum.背叛者) || CustomGameOptions.SnitchSeesTraitor)
                             {
                                 var gameObj = new GameObject();
                                 var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -75,9 +75,9 @@ namespace TownOfUs.CrewmateRoles.SnitchMod
                             }
                         }
                     }
-                    else if (PlayerControl.LocalPlayer.Data.IsImpostor() || ((PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
-                            || PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist) || PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)
-                            || PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence)) && CustomGameOptions.SnitchSeesNeutrals))
+                    else if (PlayerControl.LocalPlayer.Data.IsImpostor() || ((PlayerControl.LocalPlayer.Is(RoleEnum.混沌) || PlayerControl.LocalPlayer.Is(RoleEnum.天启)
+                            || PlayerControl.LocalPlayer.Is(RoleEnum.纵火狂) || PlayerControl.LocalPlayer.Is(RoleEnum.月下狼人)
+                            || PlayerControl.LocalPlayer.Is(RoleEnum.瘟疫之源) || PlayerControl.LocalPlayer.Is(RoleEnum.万疫之神)) && CustomGameOptions.SnitchSeesNeutrals))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(Color.green));
                     }

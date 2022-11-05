@@ -12,7 +12,7 @@ namespace TownOfUs.CrewmateRoles.AltruistMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Altruist);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.殉道者);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
@@ -32,7 +32,7 @@ namespace TownOfUs.CrewmateRoles.AltruistMod
             var player = Utils.PlayerById(playerId);
             if (player.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
             }
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

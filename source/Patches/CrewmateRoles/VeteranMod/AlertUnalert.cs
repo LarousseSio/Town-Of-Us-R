@@ -10,7 +10,7 @@ namespace TownOfUs.CrewmateRoles.VeteranMod
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Veteran))
+            foreach (var role in Role.GetRoles(RoleEnum.老兵))
             {
                 var veteran = (Veteran) role;
                 if (veteran.OnAlert)

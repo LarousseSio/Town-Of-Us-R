@@ -22,7 +22,7 @@ namespace TownOfUs.CrewmateRoles.MediumMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             var data = PlayerControl.LocalPlayer.Data;
 
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Medium))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.招魂师))
             {
                 var mediateButton = DestroyableSingleton<HudManager>.Instance.KillButton;
 
@@ -65,9 +65,9 @@ namespace TownOfUs.CrewmateRoles.MediumMod
                 renderer.color = Palette.DisabledClear;
                 renderer.material.SetFloat("_Desat", 1f);
             }
-            else if (CustomGameOptions.ShowMediumToDead && Role.AllRoles.Any(x => x.RoleType == RoleEnum.Medium && ((Medium) x).MediatedPlayers.Keys.Contains(PlayerControl.LocalPlayer.PlayerId)))
+            else if (CustomGameOptions.ShowMediumToDead && Role.AllRoles.Any(x => x.RoleType == RoleEnum.招魂师 && ((Medium) x).MediatedPlayers.Keys.Contains(PlayerControl.LocalPlayer.PlayerId)))
             {
-                var role = (Medium) Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Medium && ((Medium) x).MediatedPlayers.Keys.Contains(PlayerControl.LocalPlayer.PlayerId));
+                var role = (Medium) Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.招魂师 && ((Medium) x).MediatedPlayers.Keys.Contains(PlayerControl.LocalPlayer.PlayerId));
                 role.MediatedPlayers.GetValueSafe(PlayerControl.LocalPlayer.PlayerId).target = role.Player.transform.position;
             }
         }

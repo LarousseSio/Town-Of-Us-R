@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Sheriff))
+            foreach (var role in Role.GetRoles(RoleEnum.警长))
             {
                 var sheriff = (Sheriff) role;
                 sheriff.LastKilled = DateTime.UtcNow;

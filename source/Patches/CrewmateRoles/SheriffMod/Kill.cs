@@ -15,7 +15,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
         private static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.警长);
             if (!flag) return true;
             var role = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;
@@ -28,22 +28,22 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
             if (!flag3) return false;
 
             var flag4 = role.ClosestPlayer.Data.IsImpostor() ||
-                        role.ClosestPlayer.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester ||
-                        role.ClosestPlayer.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
-                        role.ClosestPlayer.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsGlitch ||
-                        role.ClosestPlayer.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
-                        role.ClosestPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
-                        role.ClosestPlayer.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
-                        role.ClosestPlayer.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsPlaguebearer;
+                        role.ClosestPlayer.Is(RoleEnum.小丑) && CustomGameOptions.SheriffKillsJester ||
+                        role.ClosestPlayer.Is(RoleEnum.混沌) && CustomGameOptions.SheriffKillsGlitch ||
+                        role.ClosestPlayer.Is(RoleEnum.天启) && CustomGameOptions.SheriffKillsGlitch ||
+                        role.ClosestPlayer.Is(RoleEnum.行刑者) && CustomGameOptions.SheriffKillsExecutioner ||
+                        role.ClosestPlayer.Is(RoleEnum.纵火狂) && CustomGameOptions.SheriffKillsArsonist ||
+                        role.ClosestPlayer.Is(RoleEnum.月下狼人) && CustomGameOptions.SheriffKillsWerewolf ||
+                        role.ClosestPlayer.Is(RoleEnum.瘟疫之源) && CustomGameOptions.SheriffKillsPlaguebearer;
 
-            if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 Utils.RpcMurderPlayer(role.ClosestPlayer, PlayerControl.LocalPlayer);
                 return false;
             }
             if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
             if (role.ClosestPlayer.IsOnAlert())
             {

@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static void Postfix(PlayerControl __instance)
         {
-            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Haunter))
+            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.冤魂))
             {
                 var haunter = (Haunter)role;
                 if (PlayerControl.LocalPlayer.Data.IsDead || haunter.Caught)

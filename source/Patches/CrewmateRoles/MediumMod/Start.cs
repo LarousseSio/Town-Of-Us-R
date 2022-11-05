@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.MediumMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Medium))
+            foreach (var role in Role.GetRoles(RoleEnum.招魂师))
             {
                 var medium = (Medium) role;
                 medium.LastMediated = DateTime.UtcNow;

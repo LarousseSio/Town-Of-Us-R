@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.TimeLord);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.时间领主);
             if (!flag) return true;
             var role = Role.GetRole<TimeLord>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;

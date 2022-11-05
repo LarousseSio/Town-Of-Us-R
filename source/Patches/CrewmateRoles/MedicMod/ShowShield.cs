@@ -28,14 +28,14 @@ namespace TownOfUs.CrewmateRoles.MedicMod
 
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Medic))
+            foreach (var role in Role.GetRoles(RoleEnum.法医))
             {
                 var medic = (Medic) role;
 
                 var exPlayer = medic.exShielded;
                 if (exPlayer != null)
                 {
-                    System.Console.WriteLine(exPlayer.name + " is ex-Shielded and unvisored");
+                    System.Console.WriteLine(exPlayer.name + "的护盾和效果消失了");
                     exPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
                     exPlayer.myRend().material.SetFloat("_Outline", 0f);
                     medic.exShielded = null;
@@ -67,7 +67,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
                     player.myRend().material.SetFloat("_Outline", 1f);
                     player.myRend().material.SetColor("_OutlineColor", ProtectedColor);
                 }
-                else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic) &&
+                else if (PlayerControl.LocalPlayer.Is(RoleEnum.法医) &&
                          (showShielded == ShieldOptions.Medic || showShielded == ShieldOptions.SelfAndMedic))
                 {
                     player.myRend().material.SetColor("_VisorColor", ProtectedColor);

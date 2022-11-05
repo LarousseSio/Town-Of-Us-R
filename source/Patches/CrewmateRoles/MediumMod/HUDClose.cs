@@ -12,7 +12,7 @@ namespace TownOfUs.CrewmateRoles.MediumMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Medium))
+            foreach (var role in Role.GetRoles(RoleEnum.招魂师))
             {
                 var medium = (Medium) role;
                 medium.LastMediated = DateTime.UtcNow;

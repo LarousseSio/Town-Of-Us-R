@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static void Postfix(PlayerPhysics __instance)
         {
-            if (!__instance.myPlayer.Is(RoleEnum.Haunter)) return;
+            if (!__instance.myPlayer.Is(RoleEnum.冤魂)) return;
 
             var role = Role.GetRole<Haunter>(__instance.myPlayer);
             __instance.myPlayer.Collider.enabled = !role.Caught;

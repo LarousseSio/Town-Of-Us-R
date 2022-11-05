@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Haunter))
+            foreach (var role in Role.GetRoles(RoleEnum.冤魂))
             {
                 var haunter = (Haunter) role;
                 if (role.Player.Data.Disconnected) return;

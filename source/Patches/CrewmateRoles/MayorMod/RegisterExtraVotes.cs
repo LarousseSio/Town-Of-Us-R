@@ -20,11 +20,11 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         [HarmonyPatch(nameof(MeetingHud.Update))]
         public static void Postfix(MeetingHud __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (__instance.TimerText.text.Contains("Can Vote")) return;
             var role = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
-            __instance.TimerText.text = "Can Vote: " + role.VoteBank + " time(s) | " + __instance.TimerText.text;
+            __instance.TimerText.text = "已存投票: " + role.VoteBank + " 张 | " + __instance.TimerText.text;
         }
 
         public static Dictionary<byte, int> CalculateAllVotes(MeetingHud __instance)
@@ -44,7 +44,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                     dictionary[playerVoteArea.VotedFor] = 1;
             }
 
-            foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+            foreach (var role in Role.GetRoles(RoleEnum.市长))
             foreach (var number in ((Mayor)role).ExtraVotes)
                 if (dictionary.TryGetValue(number, out var num))
                     dictionary[number] = num + 1;
@@ -78,7 +78,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         [HarmonyPatch(nameof(MeetingHud.Start))]
         public static void Prefix()
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+            foreach (var role in Role.GetRoles(RoleEnum.市长))
             {
                 var mayor = (Mayor)role;
                 mayor.ExtraVotes.Clear();
@@ -101,7 +101,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             if (AmongUsClient.Instance.AmHost && MeetingHud.Instance)
             {
-                foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+                foreach (var role in Role.GetRoles(RoleEnum.市长))
                 {
                     if (role is Mayor mayor)
                     {
@@ -129,7 +129,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static bool Prefix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return true;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return true;
                 if (__instance.state != MeetingHud.VoteStates.Voted) return true;
                 __instance.state = MeetingHud.VoteStates.NotVoted;
                 return true;
@@ -138,7 +138,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
             [HarmonyPriority(Priority.First)]
             public static void Postfix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return;
                 var role = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 if (role.CanVote) __instance.SkipVoteButton.gameObject.SetActive(true);
             }
@@ -152,7 +152,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                 [HarmonyArgument(1)] byte suspectPlayerId)
             {
                 var player = PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => x.PlayerId == srcPlayerId);
-                if (!player.Is(RoleEnum.Mayor)) return true;
+                if (!player.Is(RoleEnum.市长)) return true;
 
                 var playerVoteArea = __instance.playerStates.ToArray().First(pv => pv.TargetPlayerId == srcPlayerId);
 
@@ -192,8 +192,8 @@ namespace TownOfUs.CrewmateRoles.MayorMod
             {
                 // __instance.exiledPlayer = __instance.wasTie ? null : __instance.exiledPlayer;
                 var exiledString = exiled == null ? "null" : exiled.PlayerName;
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Was a tie = {tie}");
+                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"驱逐玩家 = {exiledString}");
+                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"平票 = {tie}");
             }
         }
 
@@ -227,7 +227,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                         var playerInfo = GameData.Instance.GetPlayerById(voteState.VoterId);
                         if (playerInfo == null)
                         {
-                            Debug.LogError(string.Format("Couldn't find player info for voter: {0}",
+                            Debug.LogError(string.Format("投票者的信息无法获取: {0}",
                                 voteState.VoterId));
                         }
                         else if (i == 0 && voteState.SkippedVote)
@@ -243,7 +243,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                     }
                 }
 
-                foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+                foreach (var role in Role.GetRoles(RoleEnum.市长))
                 {
                     var mayor = (Mayor)role;
                     var playerInfo = GameData.Instance.GetPlayerById(role.Player.PlayerId);

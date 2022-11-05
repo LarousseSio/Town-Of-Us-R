@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Transporter))
+            foreach (var role in Role.GetRoles(RoleEnum.传送师))
             {
                 var transporter = (Transporter) role;
                 transporter.LastTransported = DateTime.UtcNow;

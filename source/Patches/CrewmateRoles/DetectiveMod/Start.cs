@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Detective))
+            foreach (var role in Role.GetRoles(RoleEnum.侧写师))
             {
                 var detective = (Detective) role;
                 detective.LastExamined = DateTime.UtcNow;

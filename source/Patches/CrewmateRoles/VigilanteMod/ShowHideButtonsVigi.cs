@@ -57,7 +57,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
 
         public static void Prefix(MeetingHud __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.侠客)) return;
             var retributionist = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
             if (!CustomGameOptions.VigilanteAfterVoting) HideButtonsVigi(retributionist);
         }

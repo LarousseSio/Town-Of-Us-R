@@ -24,50 +24,50 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             //System.Console.WriteLine(br.KillAge);
             if (br.KillAge > CustomGameOptions.MedicReportColorDuration * 1000)
                 return
-                    $"Body Report: The corpse is too old to gain information from. (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+                    $"尸检报告：死亡时间过长，基本没有有效的信息了。（{Math.Round(br.KillAge / 1000)}秒前死亡）";
 
             if (br.Killer.PlayerId == br.Body.PlayerId)
                 return
-                    $"Body Report: The kill appears to have been a suicide! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+                    $"尸检报告：这人看起来是自杀的。（{Math.Round(br.KillAge / 1000)}秒前死亡）";
 
             if (br.KillAge < CustomGameOptions.MedicReportNameDuration * 1000)
                 return
-                    $"Body Report: The killer appears to be {br.Killer.Data.PlayerName}! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+                    $"尸检报告：凶手似乎是{br.Killer.Data.PlayerName}!（{Math.Round(br.KillAge / 1000)}秒前死亡）";
 
             var colors = new Dictionary<int, string>
             {
-                {0, "darker"},// red
-                {1, "darker"},// blue
-                {2, "darker"},// green
-                {3, "lighter"},// pink
-                {4, "lighter"},// orange
-                {5, "lighter"},// yellow
-                {6, "darker"},// black
-                {7, "lighter"},// white
-                {8, "darker"},// purple
-                {9, "darker"},// brown
-                {10, "lighter"},// cyan
-                {11, "lighter"},// lime
-                {12, "darker"},// maroon
-                {13, "lighter"},// rose
-                {14, "lighter"},// banana
-                {15, "darker"},// gray
-                {16, "darker"},// tan
-                {17, "lighter"},// coral
-                {18, "darker"},// watermelon
-                {19, "darker"},// chocolate
-                {20, "lighter"},// sky blue
-                {21, "darker"},// beige
-                {22, "lighter"},// hot pink
-                {23, "lighter"},// turquoise
-                {24, "lighter"},// lilac
-                {25, "darker"},// olive
-                {26, "lighter"},// azure
-                {27, "lighter"},// rainbow
+                {0, "深"},// red
+                {1, "深"},// blue
+                {2, "深"},// green
+                {3, "浅"},// pink
+                {4, "浅"},// orange
+                {5, "浅"},// yellow
+                {6, "深"},// black
+                {7, "浅"},// white
+                {8, "深"},// purple
+                {9, "深"},// brown
+                {10, "浅"},// cyan
+                {11, "浅"},// lime
+                {12, "深"},// maroon
+                {13, "浅"},// rose
+                {14, "浅"},// banana
+                {15, "深"},// gray
+                {16, "深"},// tan
+                {17, "浅"},// coral
+                {18, "深"},// watermelon
+                {19, "深"},// chocolate
+                {20, "浅"},// sky blue
+                {21, "深"},// beige
+                {22, "浅"},// hot pink
+                {23, "浅"},// turquoise
+                {24, "浅"},// lilac
+                {25, "深"},// olive
+                {26, "浅"},// azure
+                {27, "浅"},// rainbow
             };
             var typeOfColor = colors[br.Killer.GetDefaultOutfit().ColorId];
             return
-                $"Body Report: The killer appears to be a {typeOfColor} color. (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+                $"尸检报告：凶手似乎是{typeOfColor}色。（{Math.Round(br.KillAge / 1000)}秒前死亡）";
         }
     }
 }

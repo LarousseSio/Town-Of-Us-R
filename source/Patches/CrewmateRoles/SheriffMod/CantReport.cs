@@ -12,7 +12,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
         {
             if (!__instance.AmOwner) return;
             if (!__instance.CanMove) return;
-            if (!__instance.Is(RoleEnum.Sheriff)) return;
+            if (!__instance.Is(RoleEnum.警长)) return;
             if (CustomGameOptions.SheriffBodyReport) return;
             var truePosition = __instance.GetTruePosition();
 
@@ -45,7 +45,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
     {
         public static bool Prefix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Sheriff)) return true;
+            if (!__instance.Is(RoleEnum.警长)) return true;
             if (CustomGameOptions.SheriffBodyReport) return true;
 
             if (AmongUsClient.Instance.IsGameOver) return false;

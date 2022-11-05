@@ -47,7 +47,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             var nameText = Object.Instantiate(voteArea.NameText, voteArea.transform);
             voteArea.NameText.transform.localPosition = new Vector3(0.55f, 0.12f, -0.1f);
             nameText.transform.localPosition = new Vector3(0.55f, -0.12f, -0.1f);
-            nameText.text = "Guess";
+            nameText.text = "猜测";
 
             var cycleBack = Object.Instantiate(confirmButton, voteArea.transform);
             var cycleRendererBack = cycleBack.GetComponent<SpriteRenderer>();
@@ -96,7 +96,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             guessCollider.offset = Vector2.zero;
             guess.transform.GetChild(0).gameObject.Destroy();
 
-            role.Guesses.Add(targetId, "None");
+            role.Guesses.Add(targetId, "无");
             role.Buttons[targetId] = (cycleBack, cycleForward, guess, nameText);
         }
 
@@ -106,7 +106,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             {
                 if (MeetingHud.Instance.state == MeetingHud.VoteStates.Discussion) return;
                 var currentGuess = role.Guesses[voteArea.TargetPlayerId];
-                var guessIndex = currentGuess == "None"
+                var guessIndex = currentGuess == "无"
                     ? -1
                     : role.PossibleGuesses.IndexOf(currentGuess);
                 if (forwardsCycle)
@@ -122,8 +122,8 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
 
                 var newGuess = role.Guesses[voteArea.TargetPlayerId] = role.PossibleGuesses[guessIndex];
 
-                nameText.text = newGuess == "None"
-                    ? "Guess"
+                nameText.text = newGuess == "无"
+                    ? "猜测"
                     : $"<color=#{role.SortedColorMapping[newGuess].ToHtmlStringRGBA()}>{newGuess}</color>";
             }
 
@@ -140,7 +140,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
                 ) return;
                 var targetId = voteArea.TargetPlayerId;
                 var currentGuess = role.Guesses[targetId];
-                if (currentGuess == "None") return;
+                if (currentGuess == "无") return;
 
                 var playerRole = Role.GetRole(voteArea);
                 var playerModifier = Modifier.GetModifier(voteArea);
@@ -149,7 +149,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
                 if (playerModifier != null)
                     toDie = (playerRole.Name == currentGuess || playerModifier.Name == currentGuess) ? playerRole.Player : role.Player;
 
-                if (!toDie.Is(RoleEnum.Pestilence))
+                if (!toDie.Is(RoleEnum.万疫之神))
                 {
                     VigilanteKill.RpcMurderPlayer(toDie);
                     role.RemainingKills--;
@@ -157,7 +157,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
                     if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                     {
                         var lover = ((Lover)playerModifier).OtherLover.Player;
-                        if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
+                        if (!lover.Is(RoleEnum.万疫之神)) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
                     }
                 }
             }
@@ -167,7 +167,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
 
         public static void Postfix(MeetingHud __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Vigilante))
+            foreach (var role in Role.GetRoles(RoleEnum.侠客))
             {
                 var retributionist = (Vigilante)role;
                 retributionist.Guesses.Clear();
@@ -176,7 +176,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             }
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.侠客)) return;
 
             var retributionistRole = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
             if (retributionistRole.RemainingKills <= 0) return;

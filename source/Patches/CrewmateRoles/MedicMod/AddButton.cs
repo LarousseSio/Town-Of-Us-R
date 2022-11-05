@@ -42,7 +42,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
 
             PlayerControl playerControl = PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(p => p.PlayerId == voteArea.TargetPlayerId);
 
-            if (role.LightDarkColors[playerControl.GetDefaultOutfit().ColorId] == "lighter") {
+            if (role.LightDarkColors[playerControl.GetDefaultOutfit().ColorId] == "浅") {
                 renderer.sprite = LighterSprite;
             } else {
                 renderer.sprite = DarkerSprite;
@@ -69,13 +69,13 @@ namespace TownOfUs.CrewmateRoles.MedicMod
 
         public static void Postfix(MeetingHud __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Medic))
+            foreach (var role in Role.GetRoles(RoleEnum.法医))
             {
                 var medic = (Medic) role;
                 medic.Buttons.Clear();
             }
             if (CustomGameOptions.MedicReportColorDuration == 0) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Medic)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.法医)) return;
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             var medicrole = Role.GetRole<Medic>(PlayerControl.LocalPlayer);
             foreach (var voteArea in __instance.playerStates)

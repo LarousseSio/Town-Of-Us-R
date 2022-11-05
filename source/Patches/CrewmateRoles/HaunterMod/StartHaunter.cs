@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] ref bool value)
         {
-            if (!__instance.Is(RoleEnum.Haunter)) return;
+            if (!__instance.Is(RoleEnum.冤魂)) return;
             if (Role.GetRole<Haunter>(__instance).Caught) return;
             value = !__instance.inVent;
         }

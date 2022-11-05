@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.EngineerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Engineer)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.工程师)) return;
             if (__instance.KillButton == null) return;
 
             var role = Role.GetRole<Engineer>(PlayerControl.LocalPlayer);

@@ -10,7 +10,7 @@ namespace TownOfUs.CrewmateRoles.SpyMod
     {
         public static void Postfix(VitalsMinigame __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Spy)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.特工)) return;
             for (var i = 0; i < __instance.vitals.Count; i++)
             {
                 ;

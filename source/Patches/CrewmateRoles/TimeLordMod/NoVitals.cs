@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
         public static bool Prefix(VitalsMinigame __instance)
         {
             if (CustomGameOptions.TimeLordVitals) return true;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.TimeLord) && !PlayerControl.LocalPlayer.Data.IsDead)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.时间领主) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 Object.Destroy(__instance.gameObject);
                 return false;

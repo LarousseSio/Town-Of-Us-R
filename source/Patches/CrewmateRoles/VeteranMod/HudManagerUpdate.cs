@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.VeteranMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Veteran)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.老兵)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var alertButton = DestroyableSingleton<HudManager>.Instance.KillButton;

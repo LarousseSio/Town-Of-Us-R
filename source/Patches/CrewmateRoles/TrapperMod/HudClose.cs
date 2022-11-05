@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Trapper))
+            foreach (var role in Role.GetRoles(RoleEnum.陷阱师))
             {
                 var trapper = (Trapper)role;
                 trapper.LastTrapped = DateTime.UtcNow;

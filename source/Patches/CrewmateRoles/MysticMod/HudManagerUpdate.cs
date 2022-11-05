@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.MysticMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.灵媒)) return;
 
             var role = Role.GetRole<Mystic>(PlayerControl.LocalPlayer);
 

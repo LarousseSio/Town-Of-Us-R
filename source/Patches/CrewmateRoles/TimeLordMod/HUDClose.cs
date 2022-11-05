@@ -10,7 +10,7 @@ namespace TownOfUs.CrewmateRoles.TimeLordMod
     {
         public static void Postfix()
         {
-            foreach (var role in Role.GetRoles(RoleEnum.TimeLord))
+            foreach (var role in Role.GetRoles(RoleEnum.时间领主))
             {
                 var TimeLord = (TimeLord) role;
                 TimeLord.FinishRewind = DateTime.UtcNow;

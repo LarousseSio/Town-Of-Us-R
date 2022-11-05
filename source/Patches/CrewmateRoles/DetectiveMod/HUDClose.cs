@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Detective))
+            foreach (var role in Role.GetRoles(RoleEnum.侧写师))
             {
                 var detective = (Detective) role;
                 detective.LastExamined = DateTime.UtcNow;

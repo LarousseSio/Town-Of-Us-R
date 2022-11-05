@@ -56,7 +56,7 @@ namespace TownOfUs.CrewmateRoles.AltruistMod
 
             var player = Utils.PlayerById(parentId);
 
-            foreach (var poisoner in Role.GetRoles(RoleEnum.Poisoner))
+            foreach (var poisoner in Role.GetRoles(RoleEnum.绝命毒师))
             {
                 var poisonerRole = (Poisoner)poisoner;
                 if (poisonerRole.PoisonedPlayer == player) poisonerRole.PoisonedPlayer = poisonerRole.Player;
@@ -103,9 +103,9 @@ namespace TownOfUs.CrewmateRoles.AltruistMod
                 }
 
 
-            if (PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
-                || PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist) || PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)
-                || PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
+            if (PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(RoleEnum.混沌) || PlayerControl.LocalPlayer.Is(RoleEnum.天启)
+                || PlayerControl.LocalPlayer.Is(RoleEnum.纵火狂) || PlayerControl.LocalPlayer.Is(RoleEnum.月下狼人)
+                || PlayerControl.LocalPlayer.Is(RoleEnum.瘟疫之源) || PlayerControl.LocalPlayer.Is(RoleEnum.万疫之神))
             {
                 var gameObj = new GameObject();
                 Arrow = gameObj.AddComponent<ArrowBehaviour>();

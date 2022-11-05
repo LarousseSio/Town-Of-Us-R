@@ -14,7 +14,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return true;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.侧写师)) return true;
             var role = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
             var flag2 = role.ExamineTimer() == 0f;
@@ -27,9 +27,9 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
 
             if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (role.Player.IsShielded())
                 {
@@ -39,7 +39,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
                     writer2.Write(PlayerControl.LocalPlayer.PlayerId);
                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
 
-                    System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                    System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                     if (CustomGameOptions.ShieldBreaks)
                         role.LastExamined = DateTime.UtcNow;
                     StopKill.BreakShield(PlayerControl.LocalPlayer.GetMedic().Player.PlayerId, PlayerControl.LocalPlayer.PlayerId, CustomGameOptions.ShieldBreaks);

@@ -13,7 +13,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
         public static Sprite Sprite => TownOfUs.Arrow;
         public static void Postfix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Haunter)) return;
+            if (!__instance.Is(RoleEnum.冤魂)) return;
             var role = Role.GetRole<Haunter>(__instance);
 
             var taskinfos = __instance.Data.Tasks.ToArray();
@@ -22,7 +22,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
 
             if (tasksLeft == CustomGameOptions.HaunterTasksRemainingAlert && !role.Caught)
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
                 {
                     Coroutines.Start(Utils.FlashCoroutine(role.Color));
                 }
@@ -44,7 +44,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
             if (tasksLeft == 0 && !role.Caught)
             {
                 role.CompletedTasks = true;
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.冤魂))
                 {
                     Coroutines.Start(Utils.FlashCoroutine(Color.white));
                 }

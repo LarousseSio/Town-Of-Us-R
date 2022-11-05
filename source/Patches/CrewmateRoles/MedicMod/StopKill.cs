@@ -26,12 +26,12 @@ namespace TownOfUs.CrewmateRoles.MedicMod
                 return;
 
             var player = Utils.PlayerById(playerId);
-            foreach (var role in Role.GetRoles(RoleEnum.Medic))
+            foreach (var role in Role.GetRoles(RoleEnum.法医))
                 if (((Medic) role).ShieldedPlayer.PlayerId == playerId)
                 {
                     ((Medic) role).ShieldedPlayer = null;
                     ((Medic) role).exShielded = player;
-                    System.Console.WriteLine(player.name + " Is Ex-Shielded");
+                    System.Console.WriteLine(player.name + " 的护盾消失了");
                 }
 
             player.myRend().material.SetColor("_VisorColor", Palette.VisorColor);

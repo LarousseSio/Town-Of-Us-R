@@ -13,7 +13,7 @@ namespace TownOfUs.CrewmateRoles.SeerMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Seer);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.预言家);
             if (!flag) return true;
             var role = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
@@ -27,9 +27,9 @@ namespace TownOfUs.CrewmateRoles.SeerMod
             var playerId = role.ClosestPlayer.PlayerId;
             if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (role.Player.IsShielded())
                 {
@@ -39,7 +39,7 @@ namespace TownOfUs.CrewmateRoles.SeerMod
                     writer2.Write(PlayerControl.LocalPlayer.PlayerId);
                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
 
-                    System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                    System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                     if (CustomGameOptions.ShieldBreaks)
                         role.LastInvestigated = DateTime.UtcNow;
                     StopKill.BreakShield(PlayerControl.LocalPlayer.GetMedic().Player.PlayerId, PlayerControl.LocalPlayer.PlayerId, CustomGameOptions.ShieldBreaks);

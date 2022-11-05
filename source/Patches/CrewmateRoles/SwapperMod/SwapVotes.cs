@@ -42,13 +42,13 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
                 if (!((Swap1 != null) & (Swap2 != null))) return;
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {
-                    if ((player.Data.IsDead || player.Data.Disconnected) && player.Is(RoleEnum.Swapper))
+                    if ((player.Data.IsDead || player.Data.Disconnected) && player.Is(RoleEnum.换票师))
                     {
                         return;
                     }
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Swapper))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.换票师))
                 {
                     var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                     foreach (var button in swapper.Buttons.Where(button => button != null)) button.SetActive(false);

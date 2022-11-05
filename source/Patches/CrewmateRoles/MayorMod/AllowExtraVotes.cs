@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static bool Prefix(PlayerVoteArea __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return true;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return true;
                 var role = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 if (PlayerControl.LocalPlayer.Data.IsDead) return false;
                 if (__instance.AmDead) return false;
@@ -26,7 +26,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
         {
             public static bool Prefix(PlayerVoteArea __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return true;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.市长)) return true;
                 var role = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                 if (__instance.Parent.state == MeetingHud.VoteStates.Proceeding ||
                     __instance.Parent.state == MeetingHud.VoteStates.Results)

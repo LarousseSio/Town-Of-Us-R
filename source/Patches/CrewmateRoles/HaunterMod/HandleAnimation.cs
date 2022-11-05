@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
     {
         public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] ref bool amDead)
         {
-            if (__instance.myPlayer.Is(RoleEnum.Haunter)) amDead = Role.GetRole<Haunter>(__instance.myPlayer).Caught;
+            if (__instance.myPlayer.Is(RoleEnum.冤魂)) amDead = Role.GetRole<Haunter>(__instance.myPlayer).Caught;
         }
     }
 }

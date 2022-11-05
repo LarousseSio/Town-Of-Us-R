@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.SeerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.预言家)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var investigateButton = DestroyableSingleton<HudManager>.Instance.KillButton;

@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
     {
         public static void Postfix(MeetingHud __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.侠客))
             {
                 var retributionist = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
                 ShowHideButtonsVigi.HideButtonsVigi(retributionist);

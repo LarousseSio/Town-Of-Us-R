@@ -24,7 +24,7 @@ namespace TownOfUs.CrewmateRoles.HaunterMod
         }
         public static void Postfix(HudManager __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Haunter)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.冤魂)) return;
             var role = Role.GetRole<Haunter>(PlayerControl.LocalPlayer);
             if (!role.CompletedTasks || role.Caught) return;
             if (MeetingHud.Instance)

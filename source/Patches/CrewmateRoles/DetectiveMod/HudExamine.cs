@@ -16,7 +16,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.侧写师)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var examineButton = DestroyableSingleton<HudManager>.Instance.KillButton;

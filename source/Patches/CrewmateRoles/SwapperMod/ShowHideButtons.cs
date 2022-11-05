@@ -20,15 +20,15 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
             if (SwapVotes.Swap1 == null || SwapVotes.Swap2 == null) return self;
             //
 
-            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"Swap1 playerid = {SwapVotes.Swap1.TargetPlayerId}");
+            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"交换位置1 = {SwapVotes.Swap1.TargetPlayerId}");
             var swap1 = 0;
             if (self.TryGetValue(SwapVotes.Swap1.TargetPlayerId, out var value)) swap1 = value;
-            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"Swap1 player has votes = {swap1}");
+            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"交换位置1的票数 = {swap1}");
 
             var swap2 = 0;
-            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"Swap2 playerid = {SwapVotes.Swap2.TargetPlayerId}");
+            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"交换位置2 = {SwapVotes.Swap2.TargetPlayerId}");
             if (self.TryGetValue(SwapVotes.Swap2.TargetPlayerId, out var value2)) swap2 = value2;
-            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"Swap2 player has votes  = {swap2}");
+            PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"交换位置2的票数  = {swap2}");
 
             self[SwapVotes.Swap2.TargetPlayerId] = swap1;
             self[SwapVotes.Swap1.TargetPlayerId] = swap2;
@@ -41,7 +41,7 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
         {
             public static bool Prefix(MeetingHud __instance)
             {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Swapper)) return true;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.换票师)) return true;
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 foreach (var button in swapper.Buttons.Where(button => button != null))
                 {
@@ -96,7 +96,7 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
 
                 var playerControl = playerInfo.Object;
                 
-                if (playerControl.Is(AbilityEnum.Assassin) && playerInfo.IsDead)
+                if (playerControl.Is(AbilityEnum.刺客) && playerInfo.IsDead)
                 {
                     playerVoteArea.VotedFor = PlayerVoteArea.DeadVote;
                     playerVoteArea.SetDead(false, true);
@@ -117,7 +117,7 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
 
                     var maxIdx = self.MaxPair(out var tie);
 
-                    PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Meeting was a tie = {tie}");
+                    PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"投票结果是平票 = {tie}");
                     var exiled = GameData.Instance.AllPlayers.ToArray().FirstOrDefault(v => !tie && v.PlayerId == maxIdx.Key);
                     for (var i = 0; i < __instance.playerStates.Length; i++)
                     {
@@ -131,7 +131,7 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
 
                     __instance.RpcVotingComplete(array, exiled, tie);
                     
-                    foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+                    foreach (var role in Role.GetRoles(RoleEnum.市长))
                     {
                         var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
                             (byte) CustomRPC.SetExtraVotes, SendOption.Reliable, -1);

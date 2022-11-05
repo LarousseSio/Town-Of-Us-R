@@ -16,7 +16,7 @@ namespace TownOfUs.CrewmateRoles.MediumMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Medium)) return true;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.招魂师)) return true;
             var role = Role.GetRole<Medium>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;

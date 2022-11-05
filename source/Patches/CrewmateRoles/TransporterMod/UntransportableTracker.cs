@@ -19,7 +19,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
                 if (PlayerControl.LocalPlayer.Data == null) return;
                 if (PlayerControl.LocalPlayer.Data.IsDead) return;
                 if (!GameData.Instance) return;
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Transporter)) return;
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.传送师)) return;
                 var role = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
 
                 foreach (var entry in role.UntransportablePlayers)
@@ -42,7 +42,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
         {
             public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] Ladder source, [HarmonyArgument(1)] byte climbLadderSid)
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.传送师))
                     Role.GetRole<Transporter>(PlayerControl.LocalPlayer).UntransportablePlayers.Add(__instance.myPlayer.PlayerId, DateTime.UtcNow);
             }
         }
@@ -53,7 +53,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
             public static void Prefix(MovingPlatformBehaviour __instance)
             {
                 // System.Console.WriteLine(PlayerControl.LocalPlayer.PlayerId+" used the platform.");
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.传送师))
                 {
                     Role.GetRole<Transporter>(PlayerControl.LocalPlayer).UntransportablePlayers.Add(PlayerControl.LocalPlayer.PlayerId, DateTime.UtcNow);
                 }

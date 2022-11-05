@@ -43,7 +43,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
                     //PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
                     if (players[entry.PlayerId] > CustomGameOptions.MinAmountOfTimeInTrap)
                     {
-                        foreach (Trapper t in Role.GetRoles(RoleEnum.Trapper))
+                        foreach (Trapper t in Role.GetRoles(RoleEnum.陷阱师))
                         {
                             RoleEnum playerrole = Role.GetRole(Utils.PlayerById(entry.PlayerId)).RoleType;
                             if (!t.trappedPlayers.Contains(playerrole) && entry != t.Player) t.trappedPlayers.Add(playerrole);
@@ -70,7 +70,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
         public static Trap CreateTrap(this Vector3 location)
         {
             var TrapPref = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            TrapPref.name = "Trap";
+            TrapPref.name = "陷阱";
             TrapPref.transform.localScale = new Vector3(CustomGameOptions.TrapSize, CustomGameOptions.TrapSize, CustomGameOptions.TrapSize);
             GameObject.Destroy(TrapPref.GetComponent<SphereCollider>());
             TrapPref.GetComponent<MeshRenderer>().material = Roles.Trapper.trapMaterial;

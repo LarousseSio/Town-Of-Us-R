@@ -82,7 +82,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
 
                 player.myTasks.Insert(0, importantTextTask);
 
-                if (player.Is(AbilityEnum.Assassin))
+                if (player.Is(AbilityEnum.刺客))
                 {
                     var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
                     ShowHideButtons.HideButtons(assassin);
@@ -92,7 +92,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
+                if (!otherLover.Is(RoleEnum.万疫之神)) MurderPlayer(otherLover, false);
             }
 
             var meetingHud = MeetingHud.Instance;
@@ -116,7 +116,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             voteArea.XMark.gameObject.SetActive(true);
             voteArea.XMark.transform.localScale = Vector3.one;
 
-            var blackmailers = Role.AllRoles.Where(x => x.RoleType == RoleEnum.Blackmailer && x.Player != null).Cast<Blackmailer>();
+            var blackmailers = Role.AllRoles.Where(x => x.RoleType == RoleEnum.勒索者 && x.Player != null).Cast<Blackmailer>();
             foreach (var role in blackmailers)
             {
                 if (role.Blackmailed != null && voteArea.TargetPlayerId == role.Blackmailed.PlayerId)
@@ -144,7 +144,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
 
             if (AmongUsClient.Instance.AmHost)
             {
-                foreach (var role in Role.GetRoles(RoleEnum.Mayor))
+                foreach (var role in Role.GetRoles(RoleEnum.市长))
                 {
                     if (role is Mayor mayor)
                     {

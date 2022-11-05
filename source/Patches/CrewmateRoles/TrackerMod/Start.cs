@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Tracker))
+            foreach (var role in Role.GetRoles(RoleEnum.追踪者))
             {
                 var tracker = (Tracker) role;
                 tracker.LastTracked = DateTime.UtcNow;

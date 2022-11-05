@@ -20,13 +20,13 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
             if (killer == null)
                 return;
 
-            var isDetectiveAlive = __instance.Is(RoleEnum.Detective);
+            var isDetectiveAlive = __instance.Is(RoleEnum.侧写师);
             var areReportsEnabled = CustomGameOptions.DetectiveReportOn;
 
             if (!isDetectiveAlive || !areReportsEnabled)
                 return;
 
-            var isUserDetective = PlayerControl.LocalPlayer.Is(RoleEnum.Detective);
+            var isUserDetective = PlayerControl.LocalPlayer.Is(RoleEnum.侧写师);
             if (!isUserDetective)
                 return;
             var br = new BodyReport

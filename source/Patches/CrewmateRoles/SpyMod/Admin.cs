@@ -69,7 +69,7 @@ namespace TownOfUs.CrewmateRoles.SpyMod
         public static bool Prefix(MapCountOverlay __instance)
         {
             var localPlayer = PlayerControl.LocalPlayer;
-            if (!localPlayer.Is(RoleEnum.Spy)) return true;
+            if (!localPlayer.Is(RoleEnum.特工)) return true;
             __instance.timer += Time.deltaTime;
             if (__instance.timer < 0.1f) return false;
 

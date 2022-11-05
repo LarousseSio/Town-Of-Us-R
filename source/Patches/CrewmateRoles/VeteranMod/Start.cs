@@ -9,7 +9,7 @@ namespace TownOfUs.CrewmateRoles.VeteranMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Veteran))
+            foreach (var role in Role.GetRoles(RoleEnum.老兵))
             {
                 var veteran = (Veteran)role;
                 veteran.LastAlerted = DateTime.UtcNow;

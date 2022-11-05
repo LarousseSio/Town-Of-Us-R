@@ -10,7 +10,7 @@ namespace TownOfUs.CustomOption
     public static class Patches
     {
 
-        static string[] Menus = { "Game", "Crew", "Neutral", "Imposter", "Modifier" };
+        static string[] Menus = { "游戏", "船员阵营", "独立阵营", "伪装者阵营", "附加职业" };
 
         public static Export ExportButton;
         public static Import ImportButton;
@@ -165,7 +165,7 @@ namespace TownOfUs.CustomOption
                     if (title != null)
                     {
                         title.GetComponent<TextTranslatorTMP>().Destroy();
-                        title.GetComponent<TMPro.TextMeshPro>().m_text = $"Town Of Us {Menus[index]} Settings";
+                        title.GetComponent<TMPro.TextMeshPro>().m_text = $"我们的小镇 {Menus[index]} 设置";
                     }
                     var sliderInner = gameGroup?.FindChild("SliderInner");
                     if (sliderInner != null)

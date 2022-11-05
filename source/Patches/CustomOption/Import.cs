@@ -18,7 +18,7 @@ namespace TownOfUs.CustomOption
 
         public List<CustomButtonOption> SlotButtons = new List<CustomButtonOption>();
 
-        protected internal Import(int id) : base(id, MultiMenu.main, "Load Custom Settings")
+        protected internal Import(int id) : base(id, MultiMenu.main, "加载自定义预设")
         {
             Do = ToDo;
         }
@@ -65,7 +65,7 @@ namespace TownOfUs.CustomOption
 
             Loading = SlotButtons[0];
             Loading.Do = () => { };
-            Loading.Setting.Cast<ToggleOption>().TitleText.text = "Loading...";
+            Loading.Setting.Cast<ToggleOption>().TitleText.text = "载入中...";
 
             __instance.Children = new[] {Loading.Setting};
 
@@ -86,12 +86,12 @@ namespace TownOfUs.CustomOption
         protected internal void ToDo()
         {
             SlotButtons.Clear();
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 1", delegate { ImportSlot(1); }));
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 2", delegate { ImportSlot(2); }));
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 3", delegate { ImportSlot(3); }));
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 4", delegate { ImportSlot(4); }));
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 5", delegate { ImportSlot(5); }));
-            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Cancel", delegate { Cancel(FlashWhite); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "预设 1", delegate { ImportSlot(1); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "预设 2", delegate { ImportSlot(2); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "预设 3", delegate { ImportSlot(3); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "预设 4", delegate { ImportSlot(4); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "预设 5", delegate { ImportSlot(5); }));
+            SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "取消", delegate { Cancel(FlashWhite); }));
 
             var options = CreateOptions();
 

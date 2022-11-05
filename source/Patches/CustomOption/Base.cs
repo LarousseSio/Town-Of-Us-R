@@ -50,7 +50,7 @@ namespace TownOfUs.CustomOption
 
         protected internal void Set(object value, bool SendRpc = true)
         {
-            System.Console.WriteLine($"{Name} set to {value}");
+            System.Console.WriteLine($"{Name} 被设置为 {value}");
 
             Value = value;
 

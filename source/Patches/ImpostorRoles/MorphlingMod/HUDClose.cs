@@ -11,7 +11,7 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Morphling))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.化形者))
             {
                 var role = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
                 role.MorphButton.graphic.sprite = TownOfUs.SampleSprite;

@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Blackmailer))
+            foreach (var role in Role.GetRoles(RoleEnum.勒索者))
             {
                 var blackmailer = (Blackmailer) role;
                 blackmailer.LastBlackmailed = DateTime.UtcNow;

@@ -14,7 +14,7 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
 
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Morphling);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.化形者);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;

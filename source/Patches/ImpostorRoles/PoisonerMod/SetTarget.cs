@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Poisoner)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.绝命毒师)) return;
             var role = Role.GetRole<Poisoner>(PlayerControl.LocalPlayer);
             if (target != null && __instance == DestroyableSingleton<HudManager>.Instance.KillButton)
                 if (target.Data.IsImpostor())

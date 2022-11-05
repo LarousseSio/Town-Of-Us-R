@@ -14,7 +14,7 @@ namespace TownOfUs.ImpostorRoles.SwooperMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Swooper)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.隐身人)) return;
             var role = Role.GetRole<Swooper>(PlayerControl.LocalPlayer);
             if (role.SwoopButton == null)
             {

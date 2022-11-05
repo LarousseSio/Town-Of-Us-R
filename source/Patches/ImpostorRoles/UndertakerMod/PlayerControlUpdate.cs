@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Undertaker)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.送葬者)) return;
 
             var role = Role.GetRole<Undertaker>(PlayerControl.LocalPlayer);
             if (role.DragDropButton == null)

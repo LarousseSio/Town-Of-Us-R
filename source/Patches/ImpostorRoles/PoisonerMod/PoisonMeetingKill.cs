@@ -14,13 +14,13 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
             {
                 return;
             }
-            var poisoners = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Poisoner)).ToList();
+            var poisoners = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.绝命毒师)).ToList();
             foreach (var poisoner in poisoners)
             {
                 var role = Role.GetRole<Poisoner>(poisoner);
                 if (poisoner != role.PoisonedPlayer && role.PoisonedPlayer != null)
                 {
-                    if (!role.PoisonedPlayer.Data.IsDead && !role.PoisonedPlayer.Is(RoleEnum.Pestilence))
+                    if (!role.PoisonedPlayer.Data.IsDead && !role.PoisonedPlayer.Is(RoleEnum.万疫之神))
                         Utils.MurderPlayer(poisoner, role.PoisonedPlayer);
                 }
                 return;

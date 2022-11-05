@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.SwooperMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Swooper))
+            foreach (var role in Role.GetRoles(RoleEnum.隐身人))
             {
                 var swooper = (Swooper) role;
                 swooper.LastSwooped = DateTime.UtcNow;

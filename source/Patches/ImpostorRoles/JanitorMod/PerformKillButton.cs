@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.JanitorMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Janitor);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.清理者);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
@@ -30,7 +30,7 @@ namespace TownOfUs.ImpostorRoles.JanitorMod
                 var player = Utils.PlayerById(playerId);
                 if (player.IsInfected() || role.Player.IsInfected())
                 {
-                    foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+                    foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
                 }
 
                 var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

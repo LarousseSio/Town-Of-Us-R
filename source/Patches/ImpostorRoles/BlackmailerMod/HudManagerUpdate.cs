@@ -16,7 +16,7 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.勒索者)) return;
             var role = Role.GetRole<Blackmailer>(PlayerControl.LocalPlayer);
             if (role.BlackmailButton == null)
             {

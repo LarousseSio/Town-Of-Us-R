@@ -10,7 +10,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
     {
         public static void Postfix()
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Undertaker))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.送葬者))
             {
                 var role = Role.GetRole<Undertaker>(PlayerControl.LocalPlayer);
                 role.DragDropButton.graphic.sprite = TownOfUs.DragSprite;

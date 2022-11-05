@@ -16,7 +16,7 @@ namespace TownOfUs.ImpostorRoles.EscapistMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Escapist)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.逃逸者)) return;
             var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
             if (role.EscapeButton == null)
             {

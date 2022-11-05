@@ -11,7 +11,7 @@ namespace TownOfUs.ImpostorRoles.MinerMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Miner))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.管道工))
             {
                 var role = Role.GetRole<Miner>(PlayerControl.LocalPlayer);
                 role.LastMined = DateTime.UtcNow;

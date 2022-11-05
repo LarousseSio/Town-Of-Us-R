@@ -10,7 +10,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Poisoner))
+            foreach (var role in Role.GetRoles(RoleEnum.绝命毒师))
             {
                 var poisoner = (Poisoner)role;
                 poisoner.LastPoisoned = DateTime.UtcNow;

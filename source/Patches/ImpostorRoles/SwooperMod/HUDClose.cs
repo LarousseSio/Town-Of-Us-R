@@ -11,7 +11,7 @@ namespace TownOfUs.ImpostorRoles.SwooperMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Swooper))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.隐身人))
             {
                 var role = Role.GetRole<Swooper>(PlayerControl.LocalPlayer);
                 role.LastSwooped = DateTime.UtcNow;

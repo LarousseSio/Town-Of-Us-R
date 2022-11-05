@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.JanitorMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Janitor)) return true;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.清理者)) return true;
             return __instance == DestroyableSingleton<HudManager>.Instance.KillButton;
         }
 

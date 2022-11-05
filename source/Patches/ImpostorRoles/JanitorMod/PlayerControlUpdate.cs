@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.JanitorMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Janitor)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.清理者)) return;
 
             var role = Role.GetRole<Janitor>(PlayerControl.LocalPlayer);
             if (role.CleanButton == null)

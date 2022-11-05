@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Blackmailer))
+            foreach (var role in Role.GetRoles(RoleEnum.勒索者))
             {
                 var blackmailer = (Blackmailer)role;
                 if (blackmailer.Player.PlayerId == PlayerControl.LocalPlayer.PlayerId)

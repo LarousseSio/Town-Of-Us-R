@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Morphling))
+            foreach (var role in Role.GetRoles(RoleEnum.化形者))
             {
                 var morphling = (Morphling) role;
                 morphling.LastMorphed = DateTime.UtcNow;

@@ -16,7 +16,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
 
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Poisoner);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.绝命毒师);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
@@ -31,7 +31,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
                 role.PoisonButton.SetCoolDown(0.01f, 1f);
                 return false;
             }
-            if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (role.Player.IsShielded())
                 {
@@ -59,7 +59,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
             }
             if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
             if (role.ClosestPlayer.IsOnAlert())
             {

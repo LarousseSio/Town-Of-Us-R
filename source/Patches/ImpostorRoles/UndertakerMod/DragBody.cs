@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
     {
         public static void Postfix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Undertaker)) return;
+            if (!__instance.Is(RoleEnum.送葬者)) return;
             var role = Role.GetRole<Undertaker>(__instance);
             var body = role.CurrentlyDragging;
             if (body == null) return;

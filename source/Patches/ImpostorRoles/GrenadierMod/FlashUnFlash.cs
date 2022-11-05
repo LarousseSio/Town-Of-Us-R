@@ -10,7 +10,7 @@ namespace TownOfUs.ImpostorRoles.GrenadierMod
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Grenadier))
+            foreach (var role in Role.GetRoles(RoleEnum.掷弹兵))
             {
                 var grenadier = (Grenadier) role;
                 if (grenadier.Flashed)

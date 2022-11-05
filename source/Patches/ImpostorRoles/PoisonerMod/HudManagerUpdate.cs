@@ -16,12 +16,12 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Poisoner)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.绝命毒师)) return;
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
             var role = Role.GetRole<Poisoner>(PlayerControl.LocalPlayer);
-            if (role.PoisonButton == null)
+            if (role.PoisonButton == null) 
             {
                 role.PoisonButton = Object.Instantiate(__instance.KillButton, HudManager.Instance.transform);
                 role.PoisonButton.graphic.enabled = true;
@@ -30,7 +30,7 @@ namespace TownOfUs.ImpostorRoles.PoisonerMod
 
             role.PoisonButton.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance);
             __instance.KillButton.Hide();
-
+            
             var position = __instance.KillButton.transform.localPosition;
             role.PoisonButton.transform.localPosition = new Vector3(position.x,
                 position.y, position.z);

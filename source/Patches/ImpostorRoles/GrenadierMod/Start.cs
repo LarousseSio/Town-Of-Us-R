@@ -9,7 +9,7 @@ namespace TownOfUs.ImpostorRoles.GrenadierMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Grenadier))
+            foreach (var role in Role.GetRoles(RoleEnum.掷弹兵))
             {
                 var grenadier = (Grenadier) role;
                 grenadier.LastFlashed = DateTime.UtcNow;

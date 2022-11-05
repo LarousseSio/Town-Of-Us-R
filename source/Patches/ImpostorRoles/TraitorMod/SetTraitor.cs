@@ -29,9 +29,9 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                     .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             foreach (var player in alives)
             {
-                if (player.Data.IsImpostor() || ((player.Is(RoleEnum.Glitch) || player.Is(RoleEnum.Juggernaut)
-                    || player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Pestilence)
-                    || player.Is(RoleEnum.Werewolf)) && CustomGameOptions.NeutralKillingStopsTraitor))
+                if (player.Data.IsImpostor() || ((player.Is(RoleEnum.混沌) || player.Is(RoleEnum.天启)
+                    || player.Is(RoleEnum.纵火狂) || player.Is(RoleEnum.瘟疫之源) || player.Is(RoleEnum.万疫之神)
+                    || player.Is(RoleEnum.月下狼人)) && CustomGameOptions.NeutralKillingStopsTraitor))
                 {
                     return;
                 }
@@ -40,9 +40,9 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
             if (alives.Count < CustomGameOptions.LatestSpawn) return;
             if (PlayerControl.LocalPlayer != WillBeTraitor) return;
 
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor))
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.背叛者))
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.告密者))
                 {
                     var snitchRole = Role.GetRole<Snitch>(PlayerControl.LocalPlayer);
                     snitchRole.ImpArrows.DestroyAll();
@@ -51,15 +51,15 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                     CompleteTask.Postfix(PlayerControl.LocalPlayer);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.调查员)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.TimeLord))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.时间领主))
                 {
                     var timeLordRole = Role.GetRole<TimeLord>(PlayerControl.LocalPlayer);
                     Object.Destroy(timeLordRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.追踪者))
                 {
                     var trackerRole = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
                     trackerRole.TrackerArrows.Values.DestroyAll();
@@ -67,26 +67,26 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                     Object.Destroy(trackerRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.传送师))
                 {
                     var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
                     Object.Destroy(transporterRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.老兵))
                 {
                     var veteranRole = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
                     Object.Destroy(veteranRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Medium))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.招魂师))
                 {
                     var medRole = Role.GetRole<Medium>(PlayerControl.LocalPlayer);
                     medRole.MediatedPlayers.Values.DestroyAll();
                     medRole.MediatedPlayers.Clear();
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.陷阱师))
                 {
                     var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
                     Object.Destroy(trapperRole.UsesText);
@@ -112,7 +112,7 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
             RoleManager.Instance.SetRole(player, RoleTypes.Impostor);
             player.SetKillTimer(PlayerControl.GameOptions.KillCooldown);
 
-            System.Console.WriteLine("PROOF I AM IMP VANILLA ROLE: "+player.Data.Role.IsImpostor);
+            System.Console.WriteLine("证明自己是一个背叛者: "+player.Data.Role.IsImpostor);
 
             foreach (var player2 in PlayerControl.AllPlayerControls)
             {
@@ -136,10 +136,10 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                 Coroutines.Start(Utils.FlashCoroutine(Color.red, 3f));
             }
 
-            foreach (var snitch in Role.GetRoles(RoleEnum.Snitch))
+            foreach (var snitch in Role.GetRoles(RoleEnum.告密者))
             {
                 var snitchRole = (Snitch)snitch;
-                if (snitchRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Snitch) && CustomGameOptions.SnitchSeesTraitor)
+                if (snitchRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.告密者) && CustomGameOptions.SnitchSeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -150,7 +150,7 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                     gameObj.layer = 5;
                     snitchRole.SnitchArrows.Add(player.PlayerId, arrow);
                 }
-                else if (snitchRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) && CustomGameOptions.SnitchSeesTraitor)
+                else if (snitchRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.背叛者) && CustomGameOptions.SnitchSeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -160,22 +160,6 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
                     arrow.image = renderer;
                     gameObj.layer = 5;
                     snitchRole.ImpArrows.Add(arrow);
-                }
-            }
-
-            foreach (var haunter in Role.GetRoles(RoleEnum.Haunter))
-            {
-                var haunterRole = (Haunter)haunter;
-                if (haunterRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor))
-                {
-                    var gameObj = new GameObject();
-                    var arrow = gameObj.AddComponent<ArrowBehaviour>();
-                    gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
-                    var renderer = gameObj.AddComponent<SpriteRenderer>();
-                    renderer.sprite = Sprite;
-                    arrow.image = renderer;
-                    gameObj.layer = 5;
-                    haunterRole.ImpArrows.Add(arrow);
                 }
             }
 

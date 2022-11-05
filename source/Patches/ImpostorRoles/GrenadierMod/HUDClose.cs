@@ -11,7 +11,7 @@ namespace TownOfUs.ImpostorRoles.GrenadierMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.掷弹兵))
             {
                 var role = Role.GetRole<Grenadier>(PlayerControl.LocalPlayer);
                 role.LastFlashed = DateTime.UtcNow;

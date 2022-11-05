@@ -11,7 +11,7 @@ namespace TownOfUs.ImpostorRoles.EscapistMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Escapist))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.逃逸者))
             {
                 var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
                 role.EscapeButton.graphic.sprite = TownOfUs.MarkSprite;

@@ -10,7 +10,7 @@ namespace TownOfUs.ImpostorRoles.GrenadierMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.掷弹兵);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;

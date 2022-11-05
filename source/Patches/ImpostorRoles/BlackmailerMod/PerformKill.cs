@@ -12,7 +12,7 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer)) return true;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.勒索者)) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             var role = Role.GetRole<Blackmailer>(PlayerControl.LocalPlayer);
@@ -23,9 +23,9 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
 
                 if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
                 {
-                    foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                    foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
                 }
-                if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.Pestilence))
+                if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.Is(RoleEnum.万疫之神))
                 {
                     if (role.Player.IsShielded())
                     {

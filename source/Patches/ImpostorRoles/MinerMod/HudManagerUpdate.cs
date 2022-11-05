@@ -15,7 +15,7 @@ namespace TownOfUs.ImpostorRoles.MinerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Miner)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.管道工)) return;
             var role = Role.GetRole<Miner>(PlayerControl.LocalPlayer);
             if (role.MineButton == null)
             {

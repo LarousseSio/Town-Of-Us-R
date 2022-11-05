@@ -13,7 +13,7 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Morphling)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.化形者)) return;
             var role = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
             if (target != null && __instance == DestroyableSingleton<HudManager>.Instance.KillButton)
                 if (target.Data.IsImpostor())

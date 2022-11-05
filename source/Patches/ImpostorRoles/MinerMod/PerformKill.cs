@@ -15,7 +15,7 @@ namespace TownOfUs.ImpostorRoles.MinerMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Miner);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.管道工);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;

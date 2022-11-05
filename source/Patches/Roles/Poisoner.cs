@@ -16,12 +16,12 @@ namespace TownOfUs.Roles
 
         public Poisoner(PlayerControl player) : base(player)
         {
-            Name = "Poisoner";
-            ImpostorText = () => "Poison A Crewmate To Kill Them In A Few Seconds";
-            TaskText = () => "Poison the crewmates";
+            Name = "绝命毒师";
+            ImpostorText = () => "寄汤来啦~哈哈哈~";
+            TaskText = () => "给其它船员下毒";
             Color = Palette.ImpostorRed;
             LastPoisoned = DateTime.UtcNow;
-            RoleType = RoleEnum.Poisoner;
+            RoleType = RoleEnum.绝命毒师;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;
             PoisonedPlayer = null;
@@ -52,7 +52,7 @@ namespace TownOfUs.Roles
         }
         public void PoisonKill()
         {
-            if (!PoisonedPlayer.Is(RoleEnum.Pestilence))
+            if (!PoisonedPlayer.Is(RoleEnum.万疫之神))
             {
                 Utils.RpcMurderPlayer(Player, PoisonedPlayer);
                 if (!PoisonedPlayer.Data.IsDead) SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.5f);

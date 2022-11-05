@@ -19,13 +19,13 @@ namespace TownOfUs.Roles
 
         public Werewolf(PlayerControl player) : base(player)
         {
-            Name = "Werewolf";
-            ImpostorText = () => "Rampage To Kill Everyone";
-            TaskText = () => "Rampage to kill everyone\nFake Tasks:";
+            Name = "月下狼人";
+            ImpostorText = () => "暴走并杀光所有人";
+            TaskText = () => "暴走并杀光所有人\n假任务:";
             Color = Patches.Colors.Werewolf;
             LastRampaged = DateTime.UtcNow;
             LastKilled = DateTime.UtcNow;
-            RoleType = RoleEnum.Werewolf;
+            RoleType = RoleEnum.月下狼人;
             AddToRoleHistory(RoleType);
             Faction = Faction.Neutral;
         }
@@ -47,8 +47,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Glitch) || x.Is(RoleEnum.Arsonist) ||
-                    x.Is(RoleEnum.Juggernaut) || x.Is(RoleEnum.Plaguebearer) || x.Is(RoleEnum.Pestilence))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.混沌) || x.Is(RoleEnum.纵火狂) ||
+                    x.Is(RoleEnum.天启) || x.Is(RoleEnum.瘟疫之源) || x.Is(RoleEnum.万疫之神))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,

@@ -6,11 +6,11 @@ namespace TownOfUs.Roles
 
         public Janitor(PlayerControl player) : base(player)
         {
-            Name = "Janitor";
-            ImpostorText = () => "Clean Up Bodies";
-            TaskText = () => "Clean bodies to prevent Crewmates from discovering them";
+            Name = "清理者";
+            ImpostorText = () => "藏好自己 做好清理";
+            TaskText = () => "清理尸体，防止它们被发现";
             Color = Patches.Colors.Impostor;
-            RoleType = RoleEnum.Janitor;
+            RoleType = RoleEnum.清理者;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;
         }

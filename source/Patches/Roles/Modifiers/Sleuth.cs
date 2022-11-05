@@ -8,8 +8,8 @@ namespace TownOfUs.Roles.Modifiers
         public List<byte> Reported = new List<byte>();
         public Sleuth(PlayerControl player) : base(player)
         {
-            Name = "Sleuth";
-            TaskText = () => "Know the roles of bodies you report";
+            Name = "掘墓者";
+            TaskText = () => "报告尸体时知道死者的职业";
             Color = Patches.Colors.Sleuth;
             ModifierType = ModifierEnum.Sleuth;
         }

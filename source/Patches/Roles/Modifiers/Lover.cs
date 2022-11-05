@@ -11,10 +11,10 @@ namespace TownOfUs.Roles.Modifiers
     {
         public Lover(PlayerControl player) : base(player)
         {
-            Name = "Lover";
+            Name = "恋人";
             SymbolName = "♥";
             TaskText = () =>
-                "You are in Love with " + OtherLover.Player.name;
+                "你与 " + OtherLover.Player.name + "相恋了！";
             Color = Colors.Lovers;
             ModifierType = ModifierEnum.Lover;
         }
@@ -40,11 +40,11 @@ namespace TownOfUs.Roles.Modifiers
 
             foreach(var player in canHaveModifiers)
             {
-                if (player.Is(Faction.Impostors) || ((player.Is(RoleEnum.Glitch) || player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Plaguebearer)
-                    || player.Is(RoleEnum.Werewolf) || player.Is(RoleEnum.Juggernaut)) && CustomGameOptions.NeutralLovers))
+                if (player.Is(Faction.Impostors) || ((player.Is(RoleEnum.混沌) || player.Is(RoleEnum.纵火狂) || player.Is(RoleEnum.瘟疫之源)
+                    || player.Is(RoleEnum.月下狼人) || player.Is(RoleEnum.天启)) && CustomGameOptions.NeutralLovers))
                     impostors.Add(player);
-                else if (player.Is(Faction.Crewmates) || (player.Is(Faction.Neutral) && !player.Is(RoleEnum.Glitch) && !player.Is(RoleEnum.Arsonist)
-                    && !player.Is(RoleEnum.Plaguebearer) && !player.Is(RoleEnum.Werewolf) && !player.Is(RoleEnum.Juggernaut) && CustomGameOptions.NeutralLovers))
+                else if (player.Is(Faction.Crewmates) || (player.Is(Faction.Neutral) && !player.Is(RoleEnum.混沌) && !player.Is(RoleEnum.纵火狂)
+                    && !player.Is(RoleEnum.瘟疫之源) && !player.Is(RoleEnum.月下狼人) && !player.Is(RoleEnum.天启) && CustomGameOptions.NeutralLovers))
                     crewmates.Add(player);
             }
 
@@ -131,7 +131,7 @@ namespace TownOfUs.Roles.Modifiers
 
         public void Win()
         {
-            if (Role.AllRoles.Where(x => x.RoleType == RoleEnum.Jester).Any(x => ((Jester) x).VotedOut)) return;
+            if (Role.AllRoles.Where(x => x.RoleType == RoleEnum.小丑).Any(x => ((Jester) x).VotedOut)) return;
             LoveCoupleWins = true;
             OtherLover.LoveCoupleWins = true;
         }

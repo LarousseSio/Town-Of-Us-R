@@ -9,11 +9,11 @@ namespace TownOfUs.Roles
         public Dictionary<byte, ArrowBehaviour> BodyArrows = new Dictionary<byte, ArrowBehaviour>();
         public Mystic(PlayerControl player) : base(player)
         {
-            Name = "Mystic";
-            ImpostorText = () => "Understand When And Where Kills Happen";
-            TaskText = () => "Know When and Where Kills Happen";
+            Name = "灵媒";
+            ImpostorText = () => "死亡的闪烁";
+            TaskText = () => "知道什么时候有人被击杀";
             Color = Patches.Colors.Mystic;
-            RoleType = RoleEnum.Mystic;
+            RoleType = RoleEnum.灵媒;
             AddToRoleHistory(RoleType);
         }
 

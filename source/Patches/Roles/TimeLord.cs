@@ -13,13 +13,13 @@ namespace TownOfUs.Roles
         public bool ButtonUsable => UsesLeft != 0;
         public TimeLord(PlayerControl player) : base(player)
         {
-            Name = "Time Lord";
-            ImpostorText = () => "Rewind Time";
-            TaskText = () => "Rewind Time!";
+            Name = "时间领主";
+            ImpostorText = () => "回 溯 时 间";
+            TaskText = () => "可以使用技能回溯时间!";
             Color = Patches.Colors.TimeLord;
             StartRewind = DateTime.UtcNow.AddSeconds(-10.0f);
             FinishRewind = DateTime.UtcNow;
-            RoleType = RoleEnum.TimeLord;
+            RoleType = RoleEnum.时间领主;
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
             UsesLeft = CustomGameOptions.RewindMaxUses;

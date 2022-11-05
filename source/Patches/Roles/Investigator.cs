@@ -10,11 +10,11 @@ namespace TownOfUs.Roles
 
         public Investigator(PlayerControl player) : base(player)
         {
-            Name = "Investigator";
-            ImpostorText = () => "Find All Impostors By Examining Footprints";
-            TaskText = () => "You can see everyone's footprints";
+            Name = "调查员";
+            ImpostorText = () => "真相只有一个!";
+            TaskText = () => "你可以看到所有人的足迹。";
             Color = Patches.Colors.Investigator;
-            RoleType = RoleEnum.Investigator;
+            RoleType = RoleEnum.调查员;
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
         }

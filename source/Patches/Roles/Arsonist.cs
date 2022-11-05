@@ -21,12 +21,12 @@ namespace TownOfUs.Roles
 
         public Arsonist(PlayerControl player) : base(player)
         {
-            Name = "Arsonist";
-            ImpostorText = () => "Douse Players And Ignite The Light";
-            TaskText = () => "Douse players and ignite to kill all douses\nFake Tasks:";
+            Name = "纵火狂";
+            ImpostorText = () => "让世界熊熊燃烧";
+            TaskText = () => "给所有人浇油并点火\n假任务:";
             Color = Patches.Colors.Arsonist;
             LastDoused = DateTime.UtcNow;
-            RoleType = RoleEnum.Arsonist;
+            RoleType = RoleEnum.纵火狂;
             AddToRoleHistory(RoleType);
             Faction = Faction.Neutral;
         }
@@ -48,8 +48,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Glitch) || x.Is(RoleEnum.Juggernaut) ||
-                    x.Is(RoleEnum.Werewolf) || x.Is(RoleEnum.Plaguebearer) || x.Is(RoleEnum.Pestilence))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.混沌) || x.Is(RoleEnum.天启) ||
+                    x.Is(RoleEnum.月下狼人) || x.Is(RoleEnum.瘟疫之源) || x.Is(RoleEnum.万疫之神))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,
@@ -105,7 +105,7 @@ namespace TownOfUs.Roles
                     player == null ||
                     player.Data.Disconnected ||
                     player.Data.IsDead ||
-                    player.Is(RoleEnum.Pestilence)
+                    player.Is(RoleEnum.万疫之神)
                 ) continue;
                 Utils.MurderPlayer(Player, player);
             }

@@ -34,12 +34,12 @@ namespace TownOfUs.Roles
         
         public Transporter(PlayerControl player) : base(player)
         {
-            Name = "Transporter";
-            ImpostorText = () => "Choose Two Players To Swap Locations";
-            TaskText = () => "Choose two players to swap locations";
+            Name = "传送师";
+            ImpostorText = () => "空 间 错 乱";
+            TaskText = () => "选择两个玩家交换他们的位置";
             Color = Patches.Colors.Transporter;
             LastTransported = DateTime.UtcNow;
-            RoleType = RoleEnum.Transporter;
+            RoleType = RoleEnum.传送师;
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
             PressedButton = false;
@@ -132,7 +132,7 @@ namespace TownOfUs.Roles
                                 ((!player.Data.Disconnected && !player.Data.IsDead) ||
                                 Object.FindObjectsOfType<DeadBody>().Any(x => x.ParentId == player.PlayerId)))
                             {
-                                TransportList.AddChat(TempPlayer, "Click here");
+                                TransportList.AddChat(TempPlayer, "点击这里");
                                 TransportList.chatBubPool.activeChildren[TransportList.chatBubPool.activeChildren._size - 1].Cast<ChatBubble>().SetName(player.Data.PlayerName, false, false,
                                     PlayerControl.LocalPlayer.PlayerId == player.PlayerId ? Color : Color.white);
                                 var IsDeadTemp = player.Data.IsDead;
@@ -202,15 +202,15 @@ namespace TownOfUs.Roles
                                                     {
                                                         if (Player.IsInfected() || TransportPlayer1.IsInfected())
                                                         {
-                                                            foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer1);
+                                                            foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer1);
                                                         }
                                                         if (Player.IsInfected() || TransportPlayer2.IsInfected())
                                                         {
-                                                            foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer2);
+                                                            foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer2);
                                                         }
                                                         var role = GetRole(Player);
                                                         var transRole = (Transporter)role;
-                                                        if (TransportPlayer1.Is(RoleEnum.Pestilence) || TransportPlayer1.IsOnAlert())
+                                                        if (TransportPlayer1.Is(RoleEnum.万疫之神) || TransportPlayer1.IsOnAlert())
                                                         {
                                                             if (Player.IsShielded())
                                                             {
@@ -220,7 +220,7 @@ namespace TownOfUs.Roles
                                                                 writer2.Write(Player.PlayerId);
                                                                 AmongUsClient.Instance.FinishRpcImmediately(writer2);
 
-                                                                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                                                                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                                                                 if (CustomGameOptions.ShieldBreaks)
                                                                     transRole.LastTransported = DateTime.UtcNow;
                                                                 StopKill.BreakShield(Player.GetMedic().Player.PlayerId, Player.PlayerId, CustomGameOptions.ShieldBreaks);
@@ -241,7 +241,7 @@ namespace TownOfUs.Roles
                                                             transRole.LastTransported = DateTime.UtcNow;
                                                             return;
                                                         }
-                                                        else if (TransportPlayer2.Is(RoleEnum.Pestilence) || TransportPlayer2.IsOnAlert())
+                                                        else if (TransportPlayer2.Is(RoleEnum.万疫之神) || TransportPlayer2.IsOnAlert())
                                                         {
                                                             if (Player.IsShielded())
                                                             {
@@ -251,7 +251,7 @@ namespace TownOfUs.Roles
                                                                 writer2.Write(Player.PlayerId);
                                                                 AmongUsClient.Instance.FinishRpcImmediately(writer2);
 
-                                                                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                                                                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                                                                 if (CustomGameOptions.ShieldBreaks)
                                                                     transRole.LastTransported = DateTime.UtcNow;
                                                                 StopKill.BreakShield(Player.GetMedic().Player.PlayerId, Player.PlayerId, CustomGameOptions.ShieldBreaks);
@@ -439,7 +439,7 @@ namespace TownOfUs.Roles
 
         public static void StopDragging(byte PlayerId)
         {
-            var Undertaker = (Undertaker) Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Undertaker);
+            var Undertaker = (Undertaker) Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.送葬者);
             if (Undertaker != null && Undertaker.CurrentlyDragging != null &&
                 Undertaker.CurrentlyDragging.ParentId == PlayerId)
                 Undertaker.CurrentlyDragging = null;

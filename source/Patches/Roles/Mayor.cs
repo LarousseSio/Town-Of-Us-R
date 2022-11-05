@@ -8,11 +8,11 @@ namespace TownOfUs.Roles
 
         public Mayor(PlayerControl player) : base(player)
         {
-            Name = "Mayor";
-            ImpostorText = () => "Save Your Votes To Mayor Dump Someone";
-            TaskText = () => "Save your votes to vote multiple times";
+            Name = "市长";
+            ImpostorText = () => "我想要你!";
+            TaskText = () => "可以积攒你的投票";
             Color = Patches.Colors.Mayor;
-            RoleType = RoleEnum.Mayor;
+            RoleType = RoleEnum.市长;
             AddToRoleHistory(RoleType);
             VoteBank = CustomGameOptions.MayorVoteBank;
         }

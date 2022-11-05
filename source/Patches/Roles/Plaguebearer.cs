@@ -20,11 +20,11 @@ namespace TownOfUs.Roles
 
         public Plaguebearer(PlayerControl player) : base(player)
         {
-            Name = "Plaguebearer";
-            ImpostorText = () => "Infect Everyone To Become Pestilence";
-            TaskText = () => "Infect everyone to become Pestilence\nFake Tasks:";
+            Name = "瘟疫之源";
+            ImpostorText = () => "感染所有人成为万疫之神";
+            TaskText = () => "感染所有人成为万疫之神\n假任务:";
             Color = Patches.Colors.Plaguebearer;
-            RoleType = RoleEnum.Plaguebearer;
+            RoleType = RoleEnum.瘟疫之源;
             AddToRoleHistory(RoleType);
             Faction = Faction.Neutral;
             InfectedPlayers.Add(player.PlayerId);
@@ -36,8 +36,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Glitch) || x.Is(RoleEnum.Arsonist) ||
-                    x.Is(RoleEnum.Juggernaut) || x.Is(RoleEnum.Werewolf) || x.Is(RoleEnum.Pestilence))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.混沌) || x.Is(RoleEnum.纵火狂) ||
+                    x.Is(RoleEnum.天启) || x.Is(RoleEnum.月下狼人) || x.Is(RoleEnum.万疫之神))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,

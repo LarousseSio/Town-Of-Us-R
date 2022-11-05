@@ -19,11 +19,11 @@ namespace TownOfUs.Roles
 
         public Haunter(PlayerControl player) : base(player)
         {
-            Name = "Haunter";
+            Name = "冤魂";
             ImpostorText = () => "";
-            TaskText = () => "Complete all your tasks to reveal impostors!";
+            TaskText = () => "完成所有任务来揭发伪装者！!";
             Color = Patches.Colors.Haunter;
-            RoleType = RoleEnum.Haunter;
+            RoleType = RoleEnum.冤魂;
             AddToRoleHistory(RoleType);
         }
 

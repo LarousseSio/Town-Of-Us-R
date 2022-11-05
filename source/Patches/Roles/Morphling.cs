@@ -18,12 +18,12 @@ namespace TownOfUs.Roles
 
         public Morphling(PlayerControl player) : base(player)
         {
-            Name = "Morphling";
-            ImpostorText = () => "Transform Into Crewmates";
-            TaskText = () => "Morph into crewmates to be disguised";
+            Name = "化形者";
+            ImpostorText = () => "夏日，重现。";
+            TaskText = () => "伪装成其他人的样子来摆脱嫌疑。";
             Color = Patches.Colors.Impostor;
             LastMorphed = DateTime.UtcNow;
-            RoleType = RoleEnum.Morphling;
+            RoleType = RoleEnum.化形者;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;
         }

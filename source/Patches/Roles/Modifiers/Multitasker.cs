@@ -6,8 +6,8 @@ namespace TownOfUs.Roles.Modifiers
     {
         public Multitasker(PlayerControl player) : base(player)
         {
-            Name = "Multitasker";
-            TaskText = () => "Your task windows are transparent";
+            Name = "多线程";
+            TaskText = () => "你的任务窗口是透明的";
             Color = Patches.Colors.Multitasker;
             ModifierType = ModifierEnum.Multitasker;
         }

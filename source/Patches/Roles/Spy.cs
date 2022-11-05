@@ -4,11 +4,11 @@ namespace TownOfUs.Roles
     {
         public Spy(PlayerControl player) : base(player)
         {
-            Name = "Spy";
-            ImpostorText = () => "Snoop Around And Find Stuff Out";
-            TaskText = () => "Gain extra information on the Admin Table";
+            Name = "特工";
+            ImpostorText = () => "我想做个好人";
+            TaskText = () => "随时查看管理地图和心电图";
             Color = Patches.Colors.Spy;
-            RoleType = RoleEnum.Spy;
+            RoleType = RoleEnum.特工;
             AddToRoleHistory(RoleType);
         }
     }

@@ -9,13 +9,13 @@ namespace TownOfUs.Roles
     {
         public Juggernaut(PlayerControl owner) : base(owner)
         {
-            Name = "Juggernaut";
+            Name = "天启";
             Color = Patches.Colors.Juggernaut;
             LastKill = DateTime.UtcNow;
-            RoleType = RoleEnum.Juggernaut;
+            RoleType = RoleEnum.天启;
             AddToRoleHistory(RoleType);
-            ImpostorText = () => "Your Power Grows With Every Kill";
-            TaskText = () => "With each kill your kill cooldown decreases\nFake Tasks:";
+            ImpostorText = () => "越杀越想杀";
+            TaskText = () => "杀的人越多，冷却越短\n假任务:";
             Faction = Faction.Neutral;
         }
 
@@ -30,8 +30,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Glitch) || x.Is(RoleEnum.Arsonist) ||
-                    x.Is(RoleEnum.Werewolf) || x.Is(RoleEnum.Plaguebearer) || x.Is(RoleEnum.Pestilence))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.混沌) || x.Is(RoleEnum.纵火狂) ||
+                    x.Is(RoleEnum.月下狼人) || x.Is(RoleEnum.瘟疫之源) || x.Is(RoleEnum.万疫之神))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,

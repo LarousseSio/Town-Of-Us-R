@@ -146,7 +146,7 @@ namespace TownOfUs.Roles
         }
         internal virtual bool GuardianAngelCriteria()
         {
-            return PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel) && CustomGameOptions.GAKnowsTargetRole && Player == GetRole<GuardianAngel>(PlayerControl.LocalPlayer).target;
+            return PlayerControl.LocalPlayer.Is(RoleEnum.守护天使) && CustomGameOptions.GAKnowsTargetRole && Player == GetRole<GuardianAngel>(PlayerControl.LocalPlayer).target;
         }
 
         protected virtual void IntroPrefix(IntroCutscene._ShowTeam_d__21 __instance)
@@ -173,8 +173,8 @@ namespace TownOfUs.Roles
                 {
                     var role = GetRole(x);
                     if (role == null) return false;
-                    var flag2 = role.Faction == Faction.Neutral && !x.Is(RoleEnum.Juggernaut) && !x.Is(RoleEnum.Glitch)
-                    && !x.Is(RoleEnum.Arsonist) && !x.Is(RoleEnum.Plaguebearer) && !x.Is(RoleEnum.Pestilence) && !x.Is(RoleEnum.Werewolf);
+                    var flag2 = role.Faction == Faction.Neutral && !x.Is(RoleEnum.天启) && !x.Is(RoleEnum.混沌)
+                    && !x.Is(RoleEnum.纵火狂) && !x.Is(RoleEnum.瘟疫之源) && !x.Is(RoleEnum.万疫之神) && !x.Is(RoleEnum.月下狼人);
 
                     return flag2;
                 });
@@ -190,7 +190,7 @@ namespace TownOfUs.Roles
                 var flag = false;
                 foreach (var player in alives)
                 {
-                    if (player.Is(RoleEnum.Survivor)) flag = true;
+                    if (player.Is(RoleEnum.幸存者)) flag = true;
                 }
                 return flag;
             }
@@ -233,7 +233,7 @@ namespace TownOfUs.Roles
             if (Player == null) return "";
 
             String PlayerName = Player.GetDefaultOutfit().PlayerName;
-            foreach (var role in GetRoles(RoleEnum.GuardianAngel))
+            foreach (var role in GetRoles(RoleEnum.守护天使))
             {
                 var ga = (GuardianAngel)role;
                 if (Player == ga.target && Player == PlayerControl.LocalPlayer && CustomGameOptions.GATargetKnows)
@@ -251,7 +251,7 @@ namespace TownOfUs.Roles
                     PlayerName += $" {modifier.GetColoredSymbol()}";
             }
 
-            if (revealTasks && (Faction == Faction.Crewmates || RoleType == RoleEnum.Phantom))
+            if (revealTasks && (Faction == Faction.Crewmates || RoleType == RoleEnum.幻影))
             {
                 if ((PlayerControl.LocalPlayer.Data.IsDead && CustomGameOptions.SeeTasksWhenDead) || (MeetingHud.Instance && CustomGameOptions.SeeTasksDuringMeeting) || (!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance && CustomGameOptions.SeeTasksDuringRound))
                 {
@@ -291,7 +291,7 @@ namespace TownOfUs.Roles
             try
             {
                 var firstText = Player.myTasks.ToArray()[0].Cast<ImportantTextTask>();
-                createTask = !firstText.Text.Contains("Role:");
+                createTask = !firstText.Text.Contains("职业:");
             }
             catch (InvalidCastException)
             {
@@ -302,13 +302,13 @@ namespace TownOfUs.Roles
             {
                 var task = new GameObject(Name + "Task").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(Player.transform, false);
-                task.Text = $"{ColorString}Role: {Name}\n{TaskText()}</color>";
+                task.Text = $"{ColorString}职业: {Name}\n{TaskText()}</color>";
                 Player.myTasks.Insert(0, task);
                 return;
             }
 
             Player.myTasks.ToArray()[0].Cast<ImportantTextTask>().Text =
-                $"{ColorString}Role: {Name}\n{TaskText()}</color>";
+                $"{ColorString}职业: {Name}\n{TaskText()}</color>";
         }
 
         public static T Gen<T>(Type type, PlayerControl player, CustomRPC rpc)
@@ -414,7 +414,7 @@ namespace TownOfUs.Roles
                     // var alpha = __instance.__4__this.RoleText.color.a;
                     if (role != null && !role.Hidden)
                     {
-                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "Neutral" : __instance.__4__this.TeamTitle.text;
+                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "独立阵营" : __instance.__4__this.TeamTitle.text;
                         __instance.__4__this.TeamTitle.color = role.Faction == Faction.Neutral ? Color.white : __instance.__4__this.TeamTitle.color;
                         __instance.__4__this.RoleText.text = role.Name;
                         __instance.__4__this.RoleText.color = role.Color;
@@ -438,7 +438,7 @@ namespace TownOfUs.Roles
                         }
                         else
                         {
-                            ModifierText.text = "<size=4>Modifier: " + modifier.Name + "</size>";
+                            ModifierText.text = "<size=4>附加职业: " + modifier.Name + "</size>";
                         }
                         ModifierText.color = modifier.Color;
 
@@ -458,7 +458,7 @@ namespace TownOfUs.Roles
                     var role = GetRole(PlayerControl.LocalPlayer);
                     if (role != null && !role.Hidden)
                     {
-                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "Neutral" : __instance.__4__this.TeamTitle.text;
+                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "独立阵营" : __instance.__4__this.TeamTitle.text;
                         __instance.__4__this.TeamTitle.color = role.Faction == Faction.Neutral ? Color.white : __instance.__4__this.TeamTitle.color;
                         __instance.__4__this.RoleText.text = role.Name;
                         __instance.__4__this.RoleText.color = role.Color;
@@ -475,7 +475,7 @@ namespace TownOfUs.Roles
                         }
                         else
                         {
-                            ModifierText.text = "<size=4>Modifier: " + modifier.Name + "</size>";
+                            ModifierText.text = "<size=4>附加职业: " + modifier.Name + "</size>";
                         }
                         ModifierText.color = modifier.Color;
 
@@ -485,7 +485,7 @@ namespace TownOfUs.Roles
                     }
 
                     if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
-                        __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                        __instance.__4__this.ImpostorText.text = "在我们之中存在 <color=#FF0000FF>未知数量的伪装者</color>" ;
                 }
             }
 
@@ -497,7 +497,7 @@ namespace TownOfUs.Roles
                     var role = GetRole(PlayerControl.LocalPlayer);
                     if (role != null && !role.Hidden)
                     {
-                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "Neutral" : __instance.__4__this.TeamTitle.text;
+                        __instance.__4__this.TeamTitle.text = role.Faction == Faction.Neutral ? "独立阵营" : __instance.__4__this.TeamTitle.text;
                         __instance.__4__this.TeamTitle.color = role.Faction == Faction.Neutral ? Color.white : __instance.__4__this.TeamTitle.color;
                         __instance.__4__this.RoleText.text = role.Name;
                         __instance.__4__this.RoleText.color = role.Color;
@@ -514,7 +514,7 @@ namespace TownOfUs.Roles
                         }
                         else
                         {
-                            ModifierText.text = "<size=4>Modifier: " + modifier.Name + "</size>";
+                            ModifierText.text = "<size=4>附加职业: " + modifier.Name + "</size>";
                         }
                         ModifierText.color = modifier.Color;
 
@@ -524,7 +524,7 @@ namespace TownOfUs.Roles
                     }
 
                     if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
-                        __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                        __instance.__4__this.ImpostorText.text = "在我们之中存在 <color=#FF0000FF>未知数量的伪装者</color>";
                 }
             }
         }
@@ -544,15 +544,15 @@ namespace TownOfUs.Roles
                     var modTask = new GameObject(modifier.Name + "Task").AddComponent<ImportantTextTask>();
                     modTask.transform.SetParent(player.transform, false);
                     modTask.Text =
-                        $"{modifier.ColorString}Modifier: {modifier.Name}\n{modifier.TaskText()}</color>";
+                        $"{modifier.ColorString}附加职业: {modifier.Name}\n{modifier.TaskText()}</color>";
                     player.myTasks.Insert(0, modTask);
                 }
 
                 if (role == null || role.Hidden) return;
-                if (role.RoleType == RoleEnum.Amnesiac && role.Player != PlayerControl.LocalPlayer) return;
+                if (role.RoleType == RoleEnum.失忆者 && role.Player != PlayerControl.LocalPlayer) return;
                 var task = new GameObject(role.Name + "Task").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(player.transform, false);
-                task.Text = $"{role.ColorString}Role: {role.Name}\n{role.TaskText()}</color>";
+                task.Text = $"{role.ColorString}职业: {role.Name}\n{role.TaskText()}</color>";
                 player.myTasks.Insert(0, task);
             }
         }
@@ -613,28 +613,28 @@ namespace TownOfUs.Roles
         {
             private static void Postfix(LobbyBehaviour __instance)
             {
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Snitch))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.告密者))
                 {
                     ((Snitch)role).ImpArrows.DestroyAll();
                     ((Snitch)role).SnitchArrows.Values.DestroyAll();
                     ((Snitch)role).SnitchArrows.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Tracker))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.追踪者))
                 {
                     ((Tracker)role).TrackerArrows.Values.DestroyAll();
                     ((Tracker)role).TrackerArrows.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Amnesiac))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.失忆者))
                 {
                     ((Amnesiac)role).BodyArrows.Values.DestroyAll();
                     ((Amnesiac)role).BodyArrows.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Medium))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.招魂师))
                 {
                     ((Medium)role).MediatedPlayers.Values.DestroyAll();
                     ((Medium)role).MediatedPlayers.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Mystic))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.灵媒))
                 {
                     ((Mystic)role).BodyArrows.Values.DestroyAll();
                     ((Mystic)role).BodyArrows.Clear();
@@ -666,8 +666,8 @@ namespace TownOfUs.Roles
                             var info = ExileController.Instance.exiled;
                             var role = GetRole(info.Object);
                             if (role == null) return;
-                            var roleName = role.RoleType == RoleEnum.Glitch ? role.Name : $"The {role.Name}";
-                            __result = $"{info.PlayerName} was {roleName}.";
+                            var roleName = role.RoleType == RoleEnum.混沌 ? role.Name : $"玩家 {role.Name}";
+                            __result = $"{info.PlayerName} 是 {roleName}.";
                             return;
                         }
                 }

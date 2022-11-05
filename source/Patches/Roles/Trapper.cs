@@ -23,11 +23,11 @@ namespace TownOfUs.Roles
         public bool ButtonUsable => UsesLeft != 0;
         public Trapper(PlayerControl player) : base(player)
         {
-            Name = "Trapper";
-            ImpostorText = () => "Catch Killers In The Act";
-            TaskText = () => "Place traps around the map";
+            Name = "陷阱师";
+            ImpostorText = () => "抓捕凶手的行动";
+            TaskText = () => "在地图上放置陷阱";
             Color = Patches.Colors.Trapper;
-            RoleType = RoleEnum.Trapper;
+            RoleType = RoleEnum.陷阱师;
             LastTrapped = DateTime.UtcNow;
             trappedPlayers = new List<RoleEnum>();
             AddToRoleHistory(RoleType);

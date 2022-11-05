@@ -14,12 +14,12 @@ namespace TownOfUs.Roles
 
         public Miner(PlayerControl player) : base(player)
         {
-            Name = "Miner";
-            ImpostorText = () => "From The Top, Make It Drop, That's A Vent";
-            TaskText = () => "Place vents around the map";
+            Name = "管道工";
+            ImpostorText = () => "你看我像不像马里奥？";
+            TaskText = () => "可以挖额外的管道";
             Color = Patches.Colors.Impostor;
             LastMined = DateTime.UtcNow;
-            RoleType = RoleEnum.Miner;
+            RoleType = RoleEnum.管道工;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;
         }

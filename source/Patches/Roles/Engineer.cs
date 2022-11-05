@@ -6,11 +6,11 @@ namespace TownOfUs.Roles
     {
         public Engineer(PlayerControl player) : base(player)
         {
-            Name = "Engineer";
-            ImpostorText = () => "Maintain Important Systems On The Ship";
-            TaskText = () => "Vent around and fix sabotages";
+            Name = "工程师";
+            ImpostorText = () => "维护船上的重要设备";
+            TaskText = () => "随时修理船上的设备破坏";
             Color = Patches.Colors.Engineer;
-            RoleType = RoleEnum.Engineer;
+            RoleType = RoleEnum.工程师;
             AddToRoleHistory(RoleType);
         }
 

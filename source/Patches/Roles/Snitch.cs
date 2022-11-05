@@ -13,15 +13,15 @@ namespace TownOfUs.Roles
 
         public Snitch(PlayerControl player) : base(player)
         {
-            Name = "Snitch";
-            ImpostorText = () => "Complete All Your Tasks To Discover The Impostors";
+            Name = "告密者";
+            ImpostorText = () => "完成所有任务来找到伪装者";
             TaskText = () =>
                 TasksDone
-                    ? "Find the arrows pointing to the Impostors!"
-                    : "Complete all your tasks to discover the Impostors!";
+                    ? "箭头指向的就是伪装者!"
+                    : "完成所有任务来找到伪装者!";
             Color = Patches.Colors.Snitch;
             Hidden = !CustomGameOptions.SnitchOnLaunch;
-            RoleType = RoleEnum.Snitch;
+            RoleType = RoleEnum.告密者;
             AddToRoleHistory(RoleType);
         }
 
@@ -78,7 +78,7 @@ namespace TownOfUs.Roles
                 -0.5f
             );
             if(Local)
-                return PlayerName + "\n" + "Crewmate";
+                return PlayerName + "\n" + "船员";
             return PlayerName;
         }
         public void DestroyArrow(byte targetPlayerId)

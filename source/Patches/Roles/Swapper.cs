@@ -12,11 +12,11 @@ namespace TownOfUs.Roles
 
         public Swapper(PlayerControl player) : base(player)
         {
-            Name = "Swapper";
-            ImpostorText = () => "Swap The Votes Of Two People";
-            TaskText = () => "Swap two people's votes to save the Crew!";
+            Name = "换票师";
+            ImpostorText = () => "我的含金量很高哦";
+            TaskText = () => "会议时可以交换两人的投票!";
             Color = Patches.Colors.Swapper;
-            RoleType = RoleEnum.Swapper;
+            RoleType = RoleEnum.换票师;
             AddToRoleHistory(RoleType);
         }
     }

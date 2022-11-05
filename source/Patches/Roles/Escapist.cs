@@ -13,11 +13,11 @@ namespace TownOfUs.Roles
 
         public Escapist(PlayerControl player) : base(player)
         {
-            Name = "Escapist";
-            ImpostorText = () => "Get Away From Kills With Ease";
-            TaskText = () => "Teleport to get away from bodies";
+            Name = "逃逸者";
+            ImpostorText = () => "轻松躲避追杀";
+            TaskText = () => "瞬间移动远离尸体";
             Color = Patches.Colors.Impostor;
-            RoleType = RoleEnum.Escapist;
+            RoleType = RoleEnum.逃逸者;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;
         }

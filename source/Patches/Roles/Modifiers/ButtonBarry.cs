@@ -10,8 +10,8 @@ namespace TownOfUs.Roles.Modifiers
 
         public ButtonBarry(PlayerControl player) : base(player)
         {
-            Name = "Button Barry";
-            TaskText = () => "Call a button from anywhere!";
+            Name = "执钮人";
+            TaskText = () => "随时随地可以召开会议";
             Color = Patches.Colors.ButtonBarry;
             ModifierType = ModifierEnum.ButtonBarry;
         }

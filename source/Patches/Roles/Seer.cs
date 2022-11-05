@@ -9,12 +9,12 @@ namespace TownOfUs.Roles
 
         public Seer(PlayerControl player) : base(player)
         {
-            Name = "Seer";
-            ImpostorText = () => "Reveal The Alliance Of Other Players";
-            TaskText = () => "Reveal alliances of other players to find the Impostors";
+            Name = "预言家";
+            ImpostorText = () => "我看透了你的心";
+            TaskText = () => "通过调查其它人的职业找出伪装者";
             Color = Patches.Colors.Seer;
             LastInvestigated = DateTime.UtcNow;
-            RoleType = RoleEnum.Seer;
+            RoleType = RoleEnum.预言家;
             AddToRoleHistory(RoleType);
         }
 

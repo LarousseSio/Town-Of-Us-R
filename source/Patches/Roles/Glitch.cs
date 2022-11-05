@@ -24,7 +24,7 @@ namespace TownOfUs.Roles
 
         public Glitch(PlayerControl owner) : base(owner)
         {
-            Name = "The Glitch";
+            Name = "混沌";
             Color = Patches.Colors.Glitch;
             LastHack = DateTime.UtcNow;
             LastMimic = DateTime.UtcNow;
@@ -35,10 +35,10 @@ namespace TownOfUs.Roles
             HackTarget = null;
             MimicList = null;
             IsUsingMimic = false;
-            RoleType = RoleEnum.Glitch;
+            RoleType = RoleEnum.混沌;
             AddToRoleHistory(RoleType);
-            ImpostorText = () => "Murder, Mimic, Hack... Data Lost";
-            TaskText = () => "Murder everyone to win\nFake Tasks:";
+            ImpostorText = () => "全部都得死";
+            TaskText = () => "作为混沌杀死所有人\n假任务:";
             Faction = Faction.Neutral;
         }
 
@@ -62,8 +62,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Arsonist) || x.Is(RoleEnum.Juggernaut) ||
-                    x.Is(RoleEnum.Werewolf) || x.Is(RoleEnum.Plaguebearer) || x.Is(RoleEnum.Pestilence))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.纵火狂) || x.Is(RoleEnum.天启) ||
+                    x.Is(RoleEnum.月下狼人) || x.Is(RoleEnum.瘟疫之源) || x.Is(RoleEnum.万疫之神))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,
@@ -246,7 +246,7 @@ namespace TownOfUs.Roles
                 hackText = new GameObject("_Player").AddComponent<ImportantTextTask>();
                 hackText.transform.SetParent(PlayerControl.LocalPlayer.transform, false);
                 hackText.Text =
-                    $"{__instance.ColorString}Hacked {hackPlayer.Data.PlayerName} ({CustomGameOptions.HackDuration}s)</color>";
+                    $"{__instance.ColorString}锁住了 {hackPlayer.Data.PlayerName} ({CustomGameOptions.HackDuration}s)</color>";
                 hackText.Index = hackPlayer.PlayerId;
                 tickDictionary.Add(hackPlayer.PlayerId, DateTime.UtcNow);
                 PlayerControl.LocalPlayer.myTasks.Insert(0, hackText);
@@ -344,7 +344,7 @@ namespace TownOfUs.Roles
                     var totalHacktime = (DateTime.UtcNow - tickDictionary[hackPlayer.PlayerId]).TotalMilliseconds /
                                         1000;
                     hackText.Text =
-                        $"{__instance.ColorString}Hacked {hackPlayer.Data.PlayerName} ({CustomGameOptions.HackDuration - Math.Round(totalHacktime)}s)</color>";
+                        $"{__instance.ColorString}锁住了 {hackPlayer.Data.PlayerName} ({CustomGameOptions.HackDuration - Math.Round(totalHacktime)}s)</color>";
                     if (MeetingHud.Instance || totalHacktime > CustomGameOptions.HackDuration || hackPlayer == null ||
                         hackPlayer.Data.IsDead)
                     {
@@ -392,7 +392,7 @@ namespace TownOfUs.Roles
                 var mimicText = new GameObject("_Player").AddComponent<ImportantTextTask>();
                 mimicText.transform.SetParent(PlayerControl.LocalPlayer.transform, false);
                 mimicText.Text =
-                    $"{__instance.ColorString}Mimicking {mimicPlayer.Data.PlayerName} ({CustomGameOptions.MimicDuration}s)</color>";
+                    $"{__instance.ColorString}化形成 {mimicPlayer.Data.PlayerName} ({CustomGameOptions.MimicDuration}s)</color>";
                 PlayerControl.LocalPlayer.myTasks.Insert(0, mimicText);
 
                 while (true)
@@ -405,7 +405,7 @@ namespace TownOfUs.Roles
                         totalMimickTime = CustomGameOptions.MimicDuration;
                     }
                     mimicText.Text =
-                        $"{__instance.ColorString}Mimicking {mimicPlayer.Data.PlayerName} ({CustomGameOptions.MimicDuration - Math.Round(totalMimickTime)}s)</color>";
+                        $"{__instance.ColorString}化形成 {mimicPlayer.Data.PlayerName} ({CustomGameOptions.MimicDuration - Math.Round(totalMimickTime)}s)</color>";
                     if (totalMimickTime > CustomGameOptions.MimicDuration ||
                         PlayerControl.LocalPlayer.Data.IsDead ||
                         AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Ended)
@@ -467,7 +467,7 @@ namespace TownOfUs.Roles
                 if (__gInstance.KillTarget != null)
                 {
                     if (__gInstance.Player.inVent) return;
-                    if (__gInstance.KillTarget.Is(RoleEnum.Pestilence))
+                    if (__gInstance.KillTarget.Is(RoleEnum.万疫之神))
                     {
                         if (__gInstance.Player.IsShielded())
                         {
@@ -493,7 +493,7 @@ namespace TownOfUs.Roles
                     }
                     if (__gInstance.KillTarget.IsInfected() || __gInstance.Player.IsInfected())
                     {
-                        foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(__gInstance.KillTarget, __gInstance.Player);
+                        foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(__gInstance.KillTarget, __gInstance.Player);
                     }
                     if (__gInstance.KillTarget.IsOnAlert())
                     {
@@ -638,9 +638,9 @@ namespace TownOfUs.Roles
                 {
                     if (__gInstance.HackTarget.IsInfected() || __gInstance.Player.IsInfected())
                     {
-                        foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(__gInstance.HackTarget, __gInstance.Player);
+                        foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(__gInstance.HackTarget, __gInstance.Player);
                     }
-                    if (__gInstance.HackTarget.IsOnAlert() || __gInstance.HackTarget.Is(RoleEnum.Pestilence))
+                    if (__gInstance.HackTarget.IsOnAlert() || __gInstance.HackTarget.Is(RoleEnum.万疫之神))
                     {
                         if (__gInstance.Player.IsShielded())
                         {
@@ -650,7 +650,7 @@ namespace TownOfUs.Roles
                             writer2.Write(PlayerControl.LocalPlayer.PlayerId);
                             AmongUsClient.Instance.FinishRpcImmediately(writer2);
 
-                            System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                            System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- 护盾破碎");
                             if (CustomGameOptions.ShieldBreaks)
                                 __gInstance.LastHack = DateTime.UtcNow;
                             StopKill.BreakShield(PlayerControl.LocalPlayer.GetMedic().Player.PlayerId, PlayerControl.LocalPlayer.PlayerId, CustomGameOptions.ShieldBreaks);
@@ -763,7 +763,7 @@ namespace TownOfUs.Roles
                         !x.Data.Disconnected))
                     {
                         if (!player.Data.IsDead)
-                            __gInstance.MimicList.AddChat(player, "Click here");
+                            __gInstance.MimicList.AddChat(player, "点击这里");
                         else
                         {
                             var deadBodies = Object.FindObjectsOfType<DeadBody>();
@@ -771,7 +771,7 @@ namespace TownOfUs.Roles
                                 if (body.ParentId == player.PlayerId)
                                 {
                                     player.Data.IsDead = false;
-                                    __gInstance.MimicList.AddChat(player, "Click here");
+                                    __gInstance.MimicList.AddChat(player, "点击这里");
                                     player.Data.IsDead = true;
                                 }
                         }

@@ -9,13 +9,13 @@ namespace TownOfUs.Roles
     {
         public Pestilence(PlayerControl owner) : base(owner)
         {
-            Name = "Pestilence";
+            Name = "万疫之神";
             Color = Patches.Colors.Pestilence;
             LastKill = DateTime.UtcNow;
-            RoleType = RoleEnum.Pestilence;
+            RoleType = RoleEnum.万疫之神;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
-            TaskText = () => "Kill everyone with your unstoppable abilities!\nFake Tasks:";
+            TaskText = () => "用你无人能挡的能力杀死所有人!\n假任务:";
             Faction = Faction.Neutral;
         }
 
@@ -29,8 +29,8 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(RoleEnum.Glitch) || x.Is(RoleEnum.Arsonist) ||
-                    x.Is(RoleEnum.Juggernaut) || x.Is(RoleEnum.Werewolf) || x.Is(RoleEnum.Plaguebearer))) == 0)
+                    (x.Data.IsImpostor() || x.Is(RoleEnum.混沌) || x.Is(RoleEnum.纵火狂) ||
+                    x.Is(RoleEnum.天启) || x.Is(RoleEnum.月下狼人) || x.Is(RoleEnum.瘟疫之源))) == 0)
             {
                 var writer = AmongUsClient.Instance.StartRpcImmediately(
                     PlayerControl.LocalPlayer.NetId,

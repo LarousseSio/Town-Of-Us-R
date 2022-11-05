@@ -16,8 +16,8 @@ namespace TownOfUs.Roles.Modifiers
         public bool ButtonUsed;
         public Disperser(PlayerControl player) : base(player)
         {
-            Name = "Disperser";
-            TaskText = () => "Separate the Crew";
+            Name = "分散者";
+            TaskText = () => "把船员分散";
             Color = Patches.Colors.Impostor;
             ModifierType = ModifierEnum.Disperser;
         }

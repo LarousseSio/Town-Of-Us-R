@@ -15,12 +15,12 @@ namespace TownOfUs.Roles
         
         public Medium(PlayerControl player) : base(player)
         {
-            Name = "Medium";
-            ImpostorText = () => "Watch The Spooky Ghosts";
-            TaskText = () => "Follow ghosts to get clues from them";
+            Name = "招魂师";
+            ImpostorText = () => "亡魂会告诉你";
+            TaskText = () => "通过与鬼魂互动获取信息。";
             Color = Patches.Colors.Medium;
             LastMediated = DateTime.UtcNow;
-            RoleType = RoleEnum.Medium;
+            RoleType = RoleEnum.招魂师;
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
             MediatedPlayers = new Dictionary<byte, ArrowBehaviour>();

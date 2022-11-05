@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.失忆者);
             if (!flag) return true;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
@@ -36,9 +36,9 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
             var playerId = role.CurrentTarget.ParentId;
             var player = Utils.PlayerById(playerId);
-            if ((player.IsInfected() || role.Player.IsInfected()) && !player.Is(RoleEnum.Plaguebearer))
+            if ((player.IsInfected() || role.Player.IsInfected()) && !player.Is(RoleEnum.瘟疫之源))
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
             }
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
@@ -73,28 +73,28 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
 
             switch (role)
             {
-                case RoleEnum.Sheriff:
-                case RoleEnum.Engineer:
-                case RoleEnum.Mayor:
-                case RoleEnum.Swapper:
-                case RoleEnum.Investigator:
-                case RoleEnum.TimeLord:
-                case RoleEnum.Medic:
-                case RoleEnum.Seer:
-                case RoleEnum.Spy:
-                case RoleEnum.Snitch:
-                case RoleEnum.Altruist:
-                case RoleEnum.Vigilante:
-                case RoleEnum.Veteran:
-                case RoleEnum.Crewmate:
-                case RoleEnum.Tracker:
-                case RoleEnum.Transporter:
-                case RoleEnum.Medium:
-                case RoleEnum.Mystic:
-                case RoleEnum.Trapper:
-                case RoleEnum.Detective:
-                case RoleEnum.Haunter:
-                case RoleEnum.Phantom:
+                case RoleEnum.警长:
+                case RoleEnum.工程师:
+                case RoleEnum.市长:
+                case RoleEnum.换票师:
+                case RoleEnum.调查员:
+                case RoleEnum.时间领主:
+                case RoleEnum.法医:
+                case RoleEnum.预言家:
+                case RoleEnum.特工:
+                case RoleEnum.告密者:
+                case RoleEnum.殉道者:
+                case RoleEnum.侠客:
+                case RoleEnum.老兵:
+                case RoleEnum.船员:
+                case RoleEnum.追踪者:
+                case RoleEnum.传送师:
+                case RoleEnum.招魂师:
+                case RoleEnum.灵媒:
+                case RoleEnum.陷阱师:
+                case RoleEnum.侧写师:
+                case RoleEnum.冤魂:
+                case RoleEnum.幻影:
 
                     rememberImp = false;
                     rememberNeut = false;
@@ -102,32 +102,32 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                     break;
 
 
-                case RoleEnum.Jester:
-                case RoleEnum.Executioner:
-                case RoleEnum.Arsonist:
-                case RoleEnum.Amnesiac:
-                case RoleEnum.Glitch:
-                case RoleEnum.Juggernaut:
-                case RoleEnum.Survivor:
-                case RoleEnum.GuardianAngel:
-                case RoleEnum.Plaguebearer:
-                case RoleEnum.Pestilence:
-                case RoleEnum.Werewolf:
+                case RoleEnum.小丑:
+                case RoleEnum.行刑者:
+                case RoleEnum.纵火狂:
+                case RoleEnum.失忆者:
+                case RoleEnum.混沌:
+                case RoleEnum.天启:
+                case RoleEnum.幸存者:
+                case RoleEnum.守护天使:
+                case RoleEnum.瘟疫之源:
+                case RoleEnum.万疫之神:
+                case RoleEnum.月下狼人:
 
                     rememberImp = false;
 
                     break;
             }
 
-            if (role == RoleEnum.Investigator) Footprint.DestroyAll(Role.GetRole<Investigator>(other));
+            if (role == RoleEnum.调查员) Footprint.DestroyAll(Role.GetRole<Investigator>(other));
 
             newRole = Role.GetRole(other);
             newRole.Player = amnesiac;
 
-            if (role == RoleEnum.Snitch) CompleteTask.Postfix(amnesiac);
+            if (role == RoleEnum.告密者) CompleteTask.Postfix(amnesiac);
 
             Role.RoleDictionary.Remove(amnesiac.PlayerId);
-            if (!(role == RoleEnum.Haunter || role == RoleEnum.Phantom))
+            if (!(role == RoleEnum.冤魂 || role == RoleEnum.幻影))
             {
                 Role.RoleDictionary.Remove(other.PlayerId);
                 Role.RoleDictionary.Add(amnesiac.PlayerId, newRole);
@@ -138,7 +138,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 new Crewmate(amnesiac);
             }
 
-            if (rememberImp == false && (!(role == RoleEnum.Haunter || role == RoleEnum.Phantom)))
+            if (rememberImp == false && (!(role == RoleEnum.冤魂 || role == RoleEnum.幻影)))
             {
                 if (rememberNeut == false)
                 {
@@ -147,8 +147,8 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 else
                 {
                     new Survivor(other);
-                    if (role == RoleEnum.Arsonist || role == RoleEnum.Glitch || role == RoleEnum.Plaguebearer ||
-                            role == RoleEnum.Pestilence || role == RoleEnum.Werewolf || role == RoleEnum.Juggernaut)
+                    if (role == RoleEnum.纵火狂 || role == RoleEnum.混沌 || role == RoleEnum.瘟疫之源 ||
+                            role == RoleEnum.万疫之神 || role == RoleEnum.月下狼人 || role == RoleEnum.天启)
                     {
                         if (CustomGameOptions.AmneTurnNeutAssassin)
                         {
@@ -180,7 +180,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                     writer.Write(amnesiac.PlayerId);
                     AmongUsClient.Instance.FinishRpcImmediately(writer);
                 }
-                if (amnesiac.Is(RoleEnum.Poisoner))
+                if (amnesiac.Is(RoleEnum.绝命毒师))
                 {
                     if (PlayerControl.LocalPlayer == amnesiac)
                     {
@@ -206,7 +206,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
             other.myTasks = tasks2;
             other.Data.Tasks = taskinfos2;
 
-            if (role == RoleEnum.Snitch)
+            if (role == RoleEnum.告密者)
             {
                 var snitchRole = Role.GetRole<Snitch>(amnesiac);
                 snitchRole.ImpArrows.DestroyAll();
@@ -219,46 +219,46 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }
 
-            else if (role == RoleEnum.Sheriff)
+            else if (role == RoleEnum.警长)
             {
                 var sheriffRole = Role.GetRole<Sheriff>(amnesiac);
                 sheriffRole.LastKilled = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Engineer)
+            else if (role == RoleEnum.工程师)
             {
                 var engiRole = Role.GetRole<Engineer>(amnesiac);
                 engiRole.UsedThisRound = false;
             }
 
-            else if (role == RoleEnum.Medic)
+            else if (role == RoleEnum.法医)
             {
                 var medicRole = Role.GetRole<Medic>(amnesiac);
                 medicRole.UsedAbility = false;
             }
 
-            else if (role == RoleEnum.Mayor)
+            else if (role == RoleEnum.市长)
             {
                 var mayorRole = Role.GetRole<Mayor>(amnesiac);
                 mayorRole.VoteBank = CustomGameOptions.MayorVoteBank;
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }
 
-            else if (role == RoleEnum.Vigilante)
+            else if (role == RoleEnum.侠客)
             {
                 var vigiRole = Role.GetRole<Vigilante>(amnesiac);
                 vigiRole.RemainingKills = CustomGameOptions.VigilanteKills;
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }
 
-            else if (role == RoleEnum.Veteran)
+            else if (role == RoleEnum.老兵)
             {
                 var vetRole = Role.GetRole<Veteran>(amnesiac);
                 vetRole.UsesLeft = CustomGameOptions.MaxAlerts;
                 vetRole.LastAlerted = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Tracker)
+            else if (role == RoleEnum.追踪者)
             {
                 var trackerRole = Role.GetRole<Tracker>(amnesiac);
                 trackerRole.TrackerArrows.Values.DestroyAll();
@@ -267,13 +267,13 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 trackerRole.LastTracked = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Detective)
+            else if (role == RoleEnum.侧写师)
             {
                 var detectiveRole = Role.GetRole<Detective>(amnesiac);
                 detectiveRole.LastExamined = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Mystic)
+            else if (role == RoleEnum.灵媒)
             {
                 var mysticRole = Role.GetRole<Mystic>(amnesiac);
                 mysticRole.BodyArrows.Values.DestroyAll();
@@ -281,7 +281,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }
 
-            else if (role == RoleEnum.TimeLord)
+            else if (role == RoleEnum.时间领主)
             {
                 var tlRole = Role.GetRole<TimeLord>(amnesiac);
                 tlRole.FinishRewind = DateTime.UtcNow;
@@ -290,7 +290,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 tlRole.UsesLeft = CustomGameOptions.RewindMaxUses;
             }
 
-            else if (role == RoleEnum.Transporter)
+            else if (role == RoleEnum.传送师)
             {
                 var tpRole = Role.GetRole<Transporter>(amnesiac);
                 tpRole.PressedButton = false;
@@ -303,7 +303,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 tpRole.UsesLeft = CustomGameOptions.TransportMaxUses;
             }
 
-            else if (role == RoleEnum.Medium)
+            else if (role == RoleEnum.招魂师)
             {
                 var medRole = Role.GetRole<Medium>(amnesiac);
                 medRole.MediatedPlayers.Values.DestroyAll();
@@ -311,35 +311,35 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 medRole.LastMediated = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Seer)
+            else if (role == RoleEnum.预言家)
             {
                 var seerRole = Role.GetRole<Seer>(amnesiac);
                 seerRole.Investigated.RemoveRange(0, seerRole.Investigated.Count);
                 seerRole.LastInvestigated = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Arsonist)
+            else if (role == RoleEnum.纵火狂)
             {
                 var arsoRole = Role.GetRole<Arsonist>(amnesiac);
                 arsoRole.DousedPlayers.RemoveRange(0, arsoRole.DousedPlayers.Count);
                 arsoRole.LastDoused = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Survivor)
+            else if (role == RoleEnum.幸存者)
             {
                 var survRole = Role.GetRole<Survivor>(amnesiac);
                 survRole.LastVested = DateTime.UtcNow;
                 survRole.UsesLeft = CustomGameOptions.MaxVests;
             }
 
-            else if (role == RoleEnum.GuardianAngel)
+            else if (role == RoleEnum.守护天使)
             {
                 var gaRole = Role.GetRole<GuardianAngel>(amnesiac);
                 gaRole.LastProtected = DateTime.UtcNow;
                 gaRole.UsesLeft = CustomGameOptions.MaxProtects;
             }
 
-            else if (role == RoleEnum.Glitch)
+            else if (role == RoleEnum.混沌)
             {
                 var glitchRole = Role.GetRole<Glitch>(amnesiac);
                 glitchRole.LastKill = DateTime.UtcNow;
@@ -347,64 +347,64 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 glitchRole.LastMimic = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Juggernaut)
+            else if (role == RoleEnum.天启)
             {
                 var juggRole = Role.GetRole<Juggernaut>(amnesiac);
                 juggRole.JuggKills = 0;
                 juggRole.LastKill = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Grenadier)
+            else if (role == RoleEnum.掷弹兵)
             {
                 var grenadeRole = Role.GetRole<Grenadier>(amnesiac);
                 grenadeRole.LastFlashed = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Morphling)
+            else if (role == RoleEnum.化形者)
             {
                 var morphlingRole = Role.GetRole<Morphling>(amnesiac);
                 morphlingRole.LastMorphed = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Escapist)
+            else if (role == RoleEnum.逃逸者)
             {
                 var escapistRole = Role.GetRole<Escapist>(amnesiac);
                 escapistRole.LastEscape = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Swooper)
+            else if (role == RoleEnum.隐身人)
             {
                 var swooperRole = Role.GetRole<Swooper>(amnesiac);
                 swooperRole.LastSwooped = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Blackmailer)
+            else if (role == RoleEnum.勒索者)
             {
                 var blackmailerRole = Role.GetRole<Blackmailer>(amnesiac);
                 blackmailerRole.LastBlackmailed = DateTime.UtcNow;
                 blackmailerRole.Blackmailed = null;
             }
 
-            else if (role == RoleEnum.Miner)
+            else if (role == RoleEnum.管道工)
             {
                 var minerRole = Role.GetRole<Miner>(amnesiac);
                 minerRole.LastMined = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Undertaker)
+            else if (role == RoleEnum.送葬者)
             {
                 var dienerRole = Role.GetRole<Undertaker>(amnesiac);
                 dienerRole.LastDragged = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Werewolf)
+            else if (role == RoleEnum.月下狼人)
             {
                 var wwRole = Role.GetRole<Werewolf>(amnesiac);
                 wwRole.LastRampaged = DateTime.UtcNow;
                 wwRole.LastKilled = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Plaguebearer)
+            else if (role == RoleEnum.瘟疫之源)
             {
                 var plagueRole = Role.GetRole<Plaguebearer>(amnesiac);
                 plagueRole.InfectedPlayers.RemoveRange(0, plagueRole.InfectedPlayers.Count);
@@ -412,13 +412,13 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 plagueRole.LastInfected = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Pestilence)
+            else if (role == RoleEnum.万疫之神)
             {
                 var pestRole = Role.GetRole<Pestilence>(amnesiac);
                 pestRole.LastKill = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Trapper)
+            else if (role == RoleEnum.陷阱师)
             {
                 var trapperRole = Role.GetRole<Trapper>(amnesiac);
                 trapperRole.LastTrapped = DateTime.UtcNow;
@@ -427,17 +427,17 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 trapperRole.traps.ClearTraps();
             }
 
-            else if (!(amnesiac.Is(RoleEnum.Altruist) || amnesiac.Is(RoleEnum.Amnesiac) || amnesiac.Is(Faction.Impostors)))
+            else if (!(amnesiac.Is(RoleEnum.殉道者) || amnesiac.Is(RoleEnum.失忆者) || amnesiac.Is(Faction.Impostors)))
             {
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }
 
-            if (amnesiac.Is(Faction.Impostors) && (!amnesiac.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
+            if (amnesiac.Is(Faction.Impostors) && (!amnesiac.Is(RoleEnum.背叛者) || CustomGameOptions.SnitchSeesTraitor))
             {
-                foreach (var snitch in Role.GetRoles(RoleEnum.Snitch))
+                foreach (var snitch in Role.GetRoles(RoleEnum.告密者))
                 {
                     var snitchRole = (Snitch)snitch;
-                    if (snitchRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
+                    if (snitchRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.告密者))
                     {
                         var gameObj = new GameObject();
                         var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -462,12 +462,12 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 }
             }
 
-            if (other.Is(RoleEnum.Crewmate))
+            if (other.Is(RoleEnum.船员))
             {
                 var role2 = Role.GetRole<Crewmate>(other);
                 role2.RegenTask();
             }
-            else if (other.Is(RoleEnum.Survivor))
+            else if (other.Is(RoleEnum.幸存者))
             {
                 var role2 = Role.GetRole<Survivor>(other);
                 role2.RegenTask();

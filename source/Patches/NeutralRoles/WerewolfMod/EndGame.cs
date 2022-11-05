@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Werewolf)
+                if (role.RoleType == RoleEnum.月下狼人)
                     ((Werewolf) role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

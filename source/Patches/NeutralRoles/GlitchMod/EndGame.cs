@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.GlitchMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Glitch)
+                if (role.RoleType == RoleEnum.混沌)
                     ((Glitch) role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

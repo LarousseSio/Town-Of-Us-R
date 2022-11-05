@@ -9,7 +9,7 @@ namespace TownOfUs.NeutralRoles.PestilenceMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+            foreach (var role in Role.GetRoles(RoleEnum.万疫之神))
             {
                 var pestilence = (Pestilence)role;
                 pestilence.LastKill = DateTime.UtcNow;

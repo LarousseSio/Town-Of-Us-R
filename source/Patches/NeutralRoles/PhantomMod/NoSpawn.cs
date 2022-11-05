@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.PhantomMod
     {
         public static bool Prefix(SpawnInMinigame __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.幻影))
             {
                 var caught = Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught;
                 if (!caught)

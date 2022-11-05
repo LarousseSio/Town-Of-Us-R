@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Arsonist)
+                if (role.RoleType == RoleEnum.纵火狂)
                     ((Arsonist) role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

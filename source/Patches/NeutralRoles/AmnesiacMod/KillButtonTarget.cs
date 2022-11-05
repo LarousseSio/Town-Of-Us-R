@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
 
         public static bool Prefix(KillButton __instance)
         {
-            return !PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac);
+            return !PlayerControl.LocalPlayer.Is(RoleEnum.失忆者);
         }
 
         public static void SetTarget(KillButton __instance, DeadBody target, Amnesiac role)

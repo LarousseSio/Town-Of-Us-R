@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.JesterMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Jester)
+                if (role.RoleType == RoleEnum.小丑)
                     ((Jester) role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

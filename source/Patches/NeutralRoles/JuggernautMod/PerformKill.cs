@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.天启);
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
@@ -24,7 +24,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
             var flag3 = distBetweenPlayers <
                         GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance];
             if (!flag3) return false;
-            if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (role.Player.IsShielded())
                 {
@@ -50,7 +50,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
             }
             if (role.ClosestPlayer.IsInfected() || PlayerControl.LocalPlayer.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
             if (role.ClosestPlayer.IsOnAlert())
             {

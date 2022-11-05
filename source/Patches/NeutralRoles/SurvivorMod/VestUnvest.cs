@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.SurvivorMod
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Survivor))
+            foreach (var role in Role.GetRoles(RoleEnum.幸存者))
             {
                 var surv = (Survivor) role;
                 if (surv.Vesting)

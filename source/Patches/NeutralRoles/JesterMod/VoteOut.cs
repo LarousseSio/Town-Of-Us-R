@@ -14,7 +14,7 @@ namespace TownOfUs.NeutralRoles.JesterMod
 
             var role = Role.GetRole(player);
             if (role == null) return;
-            if (role.RoleType == RoleEnum.Jester) ((Jester) role).Wins();
+            if (role.RoleType == RoleEnum.小丑) ((Jester) role).Wins();
         }
     }
 }

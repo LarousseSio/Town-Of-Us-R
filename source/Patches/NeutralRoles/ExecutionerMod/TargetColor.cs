@@ -29,7 +29,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.行刑者)) return;
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
 
             var role = Role.GetRole<Executioner>(PlayerControl.LocalPlayer);
@@ -61,7 +61,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
                 var task = new GameObject("JesterTask").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(player.transform, false);
                 task.Text =
-                    $"{jester.ColorString}Role: {jester.Name}\nYour target was killed. Now you get voted out!\nFake Tasks:";
+                    $"{jester.ColorString}职业: {jester.Name}\n你的目标被杀了. 现在你只需被投票放逐!\n假任务:";
                 player.myTasks.Insert(0, task);
             }
             else if (CustomGameOptions.OnTargetDead == OnTargetDead.Amnesiac)
@@ -70,7 +70,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
                 var task = new GameObject("AmnesiacTask").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(player.transform, false);
                 task.Text =
-                    $"{amnesiac.ColorString}Role: {amnesiac.Name}\nYour target was killed. Now remember a new role!";
+                    $"{amnesiac.ColorString}职业: {amnesiac.Name}\n你的目标被杀了. 现在请记住你的新职业!";
                 player.myTasks.Insert(0, task);
             }
             else if (CustomGameOptions.OnTargetDead == OnTargetDead.Survivor)
@@ -79,7 +79,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
                 var task = new GameObject("SurvivorTask").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(player.transform, false);
                 task.Text =
-                    $"{surv.ColorString}Role: {surv.Name}\nYour target was killed. Now you just need to live!";
+                    $"{surv.ColorString}职业: {surv.Name}\n你的目标被杀了. 现在你只需存活下去!";
                 player.myTasks.Insert(0, task);
             }
             else

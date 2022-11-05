@@ -14,7 +14,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.天启)) return;
             var role = Role.GetRole<Juggernaut>(PlayerControl.LocalPlayer);
 
             __instance.KillButton.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance);

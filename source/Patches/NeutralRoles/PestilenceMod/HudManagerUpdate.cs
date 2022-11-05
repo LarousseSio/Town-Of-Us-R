@@ -14,7 +14,7 @@ namespace TownOfUs.NeutralRoles.PestilenceMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.万疫之神)) return;
             var role = Role.GetRole<Pestilence>(PlayerControl.LocalPlayer);
 
             __instance.KillButton.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance);

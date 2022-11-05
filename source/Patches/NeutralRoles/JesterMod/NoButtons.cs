@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.JesterMod
         public static void Postfix()
         {
             if (!CustomGameOptions.JesterButton)
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.小丑)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         }
     }
 
@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.JesterMod
         public static void Postfix()
         {
             if (!CustomGameOptions.JesterButton) 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.小丑)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         }
     }
 }

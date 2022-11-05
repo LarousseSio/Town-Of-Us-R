@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.PhantomMod
     {
         public static void Postfix(PlayerPhysics __instance)
         {
-            if (!__instance.myPlayer.Is(RoleEnum.Phantom)) return;
+            if (!__instance.myPlayer.Is(RoleEnum.幻影)) return;
 
             var role = Role.GetRole<Phantom>(__instance.myPlayer);
             __instance.myPlayer.Collider.enabled = !role.Caught;

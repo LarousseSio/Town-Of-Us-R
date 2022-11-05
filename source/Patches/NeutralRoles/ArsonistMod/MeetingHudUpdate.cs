@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
         {
             var localPlayer = PlayerControl.LocalPlayer;
             var _role = Role.GetRole(localPlayer);
-            if (_role?.RoleType != RoleEnum.Arsonist) return;
+            if (_role?.RoleType != RoleEnum.纵火狂) return;
             if (localPlayer.Data.IsDead) return;
             var role = (Arsonist)_role;
             foreach (var state in __instance.playerStates)

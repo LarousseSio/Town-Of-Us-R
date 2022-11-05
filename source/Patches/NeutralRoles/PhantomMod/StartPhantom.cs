@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.PhantomMod
     {
         public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] ref bool value)
         {
-            if (!__instance.Is(RoleEnum.Phantom)) return;
+            if (!__instance.Is(RoleEnum.幻影)) return;
             if (Role.GetRole<Phantom>(__instance).Caught) return;
             value = !__instance.inVent;
         }

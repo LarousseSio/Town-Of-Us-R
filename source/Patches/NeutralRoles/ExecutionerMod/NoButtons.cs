@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
         public static void Postfix()
         {
             if (!CustomGameOptions.ExecutionerButton)
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.行刑者)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         }
     }
 
@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
         public static void Postfix()
         {
             if (!CustomGameOptions.ExecutionerButton) 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.行刑者)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         }
     }
 }

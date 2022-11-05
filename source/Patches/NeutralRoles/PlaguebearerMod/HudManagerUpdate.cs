@@ -15,7 +15,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.瘟疫之源)) return;
             var isDead = PlayerControl.LocalPlayer.Data.IsDead;
             var infectButton = DestroyableSingleton<HudManager>.Instance.KillButton;
             var role = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);
@@ -55,8 +55,8 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
                 {
                     foreach (var player in alives)
                     {
-                        if (player.Data.IsImpostor() || player.Is(RoleEnum.Glitch) || player.Is(RoleEnum.Juggernaut)
-                            || player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Werewolf))
+                        if (player.Data.IsImpostor() || player.Is(RoleEnum.混沌) || player.Is(RoleEnum.天启)
+                            || player.Is(RoleEnum.纵火狂) || player.Is(RoleEnum.月下狼人))
                         {
                             transform = true;
                         }

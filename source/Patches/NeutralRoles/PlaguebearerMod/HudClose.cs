@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+            foreach (var role in Role.GetRoles(RoleEnum.瘟疫之源))
             {
                 var plaguebearer = (Plaguebearer)role;
                 plaguebearer.LastInfected = DateTime.UtcNow;

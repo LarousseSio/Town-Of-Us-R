@@ -17,7 +17,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.失忆者)) return;
 
             var role = Role.GetRole<Amnesiac>(PlayerControl.LocalPlayer);
 

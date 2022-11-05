@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
         public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] GameOverReason reason)
         {
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.GuardianAngel && ((GuardianAngel)role).target.Is(Faction.Impostors))
+                if (role.RoleType == RoleEnum.守护天使 && ((GuardianAngel)role).target.Is(Faction.Impostors))
                 {
                     if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask)
                     {

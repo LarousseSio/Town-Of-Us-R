@@ -9,7 +9,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
+            foreach (var role in Role.GetRoles(RoleEnum.天启))
             {
                 var juggernaut = (Juggernaut)role;
                 juggernaut.LastKill = DateTime.UtcNow;

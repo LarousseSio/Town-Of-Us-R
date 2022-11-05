@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.PhantomMod
     {
         public static void Postfix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Phantom)) return;
+            if (!__instance.Is(RoleEnum.幻影)) return;
             var role = Role.GetRole<Phantom>(__instance);
 
             var taskinfos = __instance.Data.Tasks.ToArray();

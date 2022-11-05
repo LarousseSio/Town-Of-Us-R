@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.PestilenceMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Pestilence)
+                if (role.RoleType == RoleEnum.万疫之神)
                     ((Pestilence)role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

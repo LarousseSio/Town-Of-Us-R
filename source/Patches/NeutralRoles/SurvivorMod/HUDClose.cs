@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.SurvivorMod
         public static void Postfix(Object obj)
         {
             if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Survivor))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.幸存者))
             {
                 var role = Role.GetRole<Survivor>(PlayerControl.LocalPlayer);
                 role.LastVested = DateTime.UtcNow;

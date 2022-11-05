@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.PestilenceMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.万疫之神);
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;

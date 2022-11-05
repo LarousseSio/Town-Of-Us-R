@@ -9,7 +9,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Arsonist))
+            foreach (var role in Role.GetRoles(RoleEnum.纵火狂))
             {
                 var arsonist = (Arsonist) role;
                 arsonist.LastDoused = DateTime.UtcNow;

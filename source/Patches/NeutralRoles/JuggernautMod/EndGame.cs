@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Juggernaut)
+                if (role.RoleType == RoleEnum.天启)
                     ((Juggernaut)role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

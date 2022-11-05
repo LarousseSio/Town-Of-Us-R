@@ -12,13 +12,13 @@ namespace TownOfUs.NeutralRoles.PhantomMod
         public static void Postfix(EndGameManager __instance)
         {
             var role = Role.AllRoles.FirstOrDefault(x =>
-                x.RoleType == RoleEnum.Phantom && ((Phantom)x).CompletedTasks);
+                x.RoleType == RoleEnum.幻影 && ((Phantom)x).CompletedTasks);
             if (role == null) return;
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
             array[0].NameText().text = role.ColorString + array[0].NameText().text + "</color>";
             __instance.BackgroundBar.material.color = role.Color;
             var text = Object.Instantiate(__instance.WinText);
-            text.text = "Phantom Wins!";
+            text.text = "幻影获胜!";
             text.color = role.Color;
             var pos = __instance.WinText.transform.localPosition;
             pos.y = 1.5f;

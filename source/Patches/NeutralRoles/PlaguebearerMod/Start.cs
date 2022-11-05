@@ -9,7 +9,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+            foreach (var role in Role.GetRoles(RoleEnum.瘟疫之源))
             {
                 var plaguebearer = (Plaguebearer)role;
                 plaguebearer.LastInfected = DateTime.UtcNow;

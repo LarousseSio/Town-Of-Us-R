@@ -22,7 +22,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
 
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
+            foreach (var role in Role.GetRoles(RoleEnum.守护天使))
             {
                 var ga = (GuardianAngel) role;
 
@@ -45,7 +45,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
                         player.myRend().material.SetFloat("_Outline", 1f);
                         player.myRend().material.SetColor("_OutlineColor", ProtectedColor);
                     }
-                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel) &&
+                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.守护天使) &&
                              (showProtected == ProtectOptions.GA || showProtected == ProtectOptions.SelfAndGA))
                     {
                         player.myRend().material.SetColor("_VisorColor", ProtectedColor);
@@ -70,7 +70,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
                         player.myRend().material.SetFloat("_Outline", 1f);
                         player.myRend().material.SetColor("_OutlineColor", ShieldedColor);
                     }
-                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic) &&
+                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.法医) &&
                              (showShielded == ShieldOptions.Medic || showShielded == ShieldOptions.SelfAndMedic))
                     {
                         player.myRend().material.SetColor("_VisorColor", ShieldedColor);

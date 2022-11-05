@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.PhantomMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask) return true;
 
             foreach (var role in Role.AllRoles)
-                if (role.RoleType == RoleEnum.Phantom)
+                if (role.RoleType == RoleEnum.幻影)
                     ((Phantom) role).Loses();
 
             var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,

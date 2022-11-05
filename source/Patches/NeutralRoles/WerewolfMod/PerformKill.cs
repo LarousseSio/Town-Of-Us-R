@@ -11,7 +11,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.月下狼人);
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
@@ -38,7 +38,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
                         GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance];
             if (!flag3) return false;
 
-            if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
+            if (role.ClosestPlayer.Is(RoleEnum.万疫之神))
             {
                 if (role.Player.IsShielded())
                 {
@@ -64,7 +64,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
             }
             if (role.ClosestPlayer.IsInfected() || PlayerControl.LocalPlayer.IsInfected())
             {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+                foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
             if (role.ClosestPlayer.IsOnAlert())
             {

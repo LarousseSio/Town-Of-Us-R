@@ -11,13 +11,13 @@ namespace TownOfUs.NeutralRoles.JesterMod
     {
         public static void Postfix(EndGameManager __instance)
         {
-            var role = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Jester && ((Jester) x).VotedOut);
+            var role = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.小丑 && ((Jester) x).VotedOut);
             if (role == null) return;
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
             array[0].NameText().text = role.ColorString + array[0].NameText().text + "</color>";
             __instance.BackgroundBar.material.color = role.Color;
             var text = Object.Instantiate(__instance.WinText);
-            text.text = "Jester Wins!";
+            text.text = "小丑获胜!";
             text.color = role.Color;
             var pos = __instance.WinText.transform.localPosition;
             pos.y = 1.5f;

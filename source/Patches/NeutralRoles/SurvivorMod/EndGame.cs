@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.SurvivorMod
             if (reason != GameOverReason.HumansByVote && reason != GameOverReason.HumansByTask)
             {
                 foreach (var role in Role.AllRoles)
-                    if (role.RoleType == RoleEnum.Survivor && !role.Player.Data.IsDead && !role.Player.Data.Disconnected)
+                    if (role.RoleType == RoleEnum.幸存者 && !role.Player.Data.IsDead && !role.Player.Data.Disconnected)
                     {
                         ((Survivor)role).AliveImpWin();
 
@@ -26,7 +26,7 @@ namespace TownOfUs.NeutralRoles.SurvivorMod
             else
             {
                 foreach (var role in Role.AllRoles)
-                    if (role.RoleType == RoleEnum.Survivor && (role.Player.Data.IsDead || role.Player.Data.Disconnected))
+                    if (role.RoleType == RoleEnum.幸存者 && (role.Player.Data.IsDead || role.Player.Data.Disconnected))
                     {
                         ((Survivor)role).DeadCrewWin();
 

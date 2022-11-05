@@ -8,7 +8,7 @@ namespace TownOfUs.NeutralRoles.GlitchMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) && __instance.isActiveAndEnabled &&
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.混沌) && __instance.isActiveAndEnabled &&
                 !__instance.isCoolingDown)
                 return Role.GetRole<Glitch>(PlayerControl.LocalPlayer).UseAbility(__instance);
 

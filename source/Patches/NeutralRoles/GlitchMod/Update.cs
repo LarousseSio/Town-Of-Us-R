@@ -10,10 +10,10 @@ namespace TownOfUs.NeutralRoles.GlitchMod
     {
         private static void Postfix(HudManager __instance)
         {
-            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch);
+            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.混沌);
             if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
                 if (glitch != null)
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.混沌))
                         Role.GetRole<Glitch>(PlayerControl.LocalPlayer).Update(__instance);
         }
     }

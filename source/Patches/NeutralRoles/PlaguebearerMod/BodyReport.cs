@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
                 {
                     if (PlayerControl.LocalPlayer.IsInfected() || player.IsInfected())
                     {
-                        foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(PlayerControl.LocalPlayer, player);
+                        foreach (var pb in Role.GetRoles(RoleEnum.瘟疫之源)) ((Plaguebearer)pb).RpcSpreadInfection(PlayerControl.LocalPlayer, player);
                     }
                 }
             }

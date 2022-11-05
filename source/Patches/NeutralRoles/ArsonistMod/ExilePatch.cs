@@ -23,13 +23,13 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
         public static void ExileControllerPostfix(ExileController __instance)
         {
             var exiled = __instance.exiled?.Object;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.纵火狂)) return;
             var alives = PlayerControl.AllPlayerControls.ToArray()
                     .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             foreach (var player in alives)
             {
-                if (player.Data.IsImpostor() || player.Is(RoleEnum.Glitch) || player.Is(RoleEnum.Juggernaut)
-                    || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Werewolf))
+                if (player.Data.IsImpostor() || player.Is(RoleEnum.混沌) || player.Is(RoleEnum.天启)
+                    || player.Is(RoleEnum.瘟疫之源) || player.Is(RoleEnum.万疫之神) || player.Is(RoleEnum.月下狼人))
                 {
                     return;
                 }

@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.GlitchMod
     {
         private static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch);
+            var glitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.混沌);
             if (glitch != null)
             {
                 ((Glitch)glitch).LastMimic = DateTime.UtcNow.AddSeconds(CustomGameOptions.InitialCooldowns + CustomGameOptions.MimicCooldown * -1);

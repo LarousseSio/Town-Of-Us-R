@@ -9,7 +9,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.Executioner))
+            foreach (var role in Role.GetRoles(RoleEnum.行刑者))
             {
                 var exe = (Executioner) role;
                 if (exe.target == null && PlayerControl.LocalPlayer == exe.Player)

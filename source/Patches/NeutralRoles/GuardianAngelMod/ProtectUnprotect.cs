@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
+            foreach (var role in Role.GetRoles(RoleEnum.守护天使))
             {
                 var ga = (GuardianAngel) role;
                 if (ga.Protecting)

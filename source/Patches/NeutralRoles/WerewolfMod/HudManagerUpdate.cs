@@ -15,7 +15,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.月下狼人)) return;
             var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
             var isDead = PlayerControl.LocalPlayer.Data.IsDead;
 

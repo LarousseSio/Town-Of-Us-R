@@ -10,7 +10,7 @@ namespace TownOfUs.NeutralRoles.GuardianAngelMod
     {
         public static void Postfix(IntroCutscene._CoBegin_d__19 __instance)
         {
-            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
+            foreach (var role in Role.GetRoles(RoleEnum.守护天使))
             {
                 var ga = (GuardianAngel)role;
                 ga.LastProtected = DateTime.UtcNow;

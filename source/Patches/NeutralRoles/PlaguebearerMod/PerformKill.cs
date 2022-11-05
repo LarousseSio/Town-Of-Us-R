@@ -12,7 +12,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
         public static bool Prefix(KillButton __instance)
         {
             // if (!__instance.isActiveAndEnabled) return false;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.瘟疫之源);
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
